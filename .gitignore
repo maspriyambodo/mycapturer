@@ -15,3 +15,8 @@ application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
 /vendor/
+/nbproject
+/application/sessions
+/application/config
+/index.php
+/.htaccess

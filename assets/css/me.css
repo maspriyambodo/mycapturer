@@ -1,0 +1,21 @@
+.select2-container--default .select2-selection--single{
+    position: relative;
+    flex: 1 1 0%;
+    min-width: 0;
+    margin-bottom: 0;
+    font-size: .9rem;
+    font-family: inherit;
+    min-height: 40px;
+    line-height: 18px;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    border: 1px solid #ced4da;
+    background-clip: padding-box;
+    background-color: #fff;
+    color:#495057;
+    height:calc(1.5em + .75rem + 2px);
+    display: block;
+    padding: 5px !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+    top: 5px;
+}

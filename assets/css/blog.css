@@ -1,0 +1,243 @@
+/*
+Product:        
+License Type:   
+Access Type:    Multi-User
+License:        https://maspriyambodo.com
+maspriyambodo@gmail.com
+
+Thank you,
+maspriyambodo
+*/
+/* 
+    Created on : Aug 19, 2021, 9:40:17 PM
+    Author     : centos
+*/
+
+.clearfix::before, .clearfix::after, .row::before, .row::after {
+    content: '\0020';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+.blogposts-wrap {
+    margin-bottom: 15px;
+}
+.blogposts-inner {
+    margin-top: 10px;
+    border-bottom: 1px dashed #e2e2e2;
+    padding-bottom: 10px;
+}
+
+.full-left {
+    display: block;
+    position: relative;
+    width: 100%;
+    float: left;
+}
+
+.magbig-thumb, .magbig-thumb-grid {
+    position: relative;
+    float: left;
+    height: 125px;
+    width: 125px;
+    overflow: hidden;
+}
+
+.magbig-thumb img, .magbig-thumb-grid img {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+    box-shadow: 0 0 2px #b5b5b5;
+    -moz-box-shadow: 0 0 2px #b5b5b5;
+    -webkit-box-shadow: 0 0 2px #b5b5b5;
+    -webkit-transition: all .4s;
+    -moz-transition: all .4s;
+    -o-transition: all .4s;
+    transition: all .4s;
+}
+
+.list-block {
+    position: relative;
+    width: 70%;
+    float: left;
+    border-top: none;
+    padding-bottom: 6px;
+    color: #5a5a5a;
+    padding: 0 0 0 18px;
+    min-height: 125px;
+}
+
+.list-block h1 a{
+    font-size: 24px !important;
+    color: black !important;
+}
+
+.blog-lists-blog h1, .article-header h1 {
+    font-size: 17px;
+    margin-bottom: 10px;
+    color: #15498b;
+    line-height: 22px;
+    font-weight: 700;
+}
+
+.post-meta-blog {
+    font-family: PT Sans,sans-serif;
+    color: #707070;
+    border-bottom: 1px solid #e4e4e4;
+    border-top: 1px solid #e4e4e4;
+    padding: 3px 0;
+    font-size: 11px;
+    margin: 10px 0;
+}
+.post-meta-blog span {
+    display: inline-block;
+    padding: 0 4px;
+}
+
+span.meta_date {
+    margin-right: -10px;
+}
+
+.meta_comments {
+    visibility: hidden;
+}
+
+.maga-excerpt {
+    display: block;
+    float: left;
+}
+
+.clear {
+    clear: both;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+.blog-lists-blog {
+    margin-bottom: 20px;
+}
+
+.blogposts-tp-site-wrap {
+    position: relative;
+    margin: 0 0 20px;
+}
+
+#tp-section-left {
+    border-right: 1px solid #ddd;
+    padding-right: 15px;
+}
+
+.container .column, .container .columns {
+    float: left;
+    display: inline;
+}
+
+#widget-categories{
+    height: 500px;
+    overflow: scroll;
+}
+
+.entry-title h2 {
+    font-family: Raleway,sans-serif;
+    line-height: 1.5;
+    color: #444;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.entry-meta li::before {
+    content: '/';
+    display: inline-block;
+    margin-right: 10px;
+    opacity: .5;
+}
+
+.entry-meta {
+    margin: 10px -10px -15px 0;
+    list-style: none;
+}
+
+.entry-meta li {
+    float: left;
+    font-size: 13px;
+    line-height: 14px;
+    margin: 0 10px 15px 0;
+    color: #999;
+    font-family: crete round,serif;
+    font-style: italic;
+}
+
+.entry-meta li i {
+    position: relative;
+    top: 1px;
+    font-size: 14px;
+    margin-right: 3px;
+}
+
+.entry-meta li a {
+    color: #999;
+}
+
+.blog-list-small {
+    margin-bottom: 10px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+.sb-post-thumbnail {
+    position: relative;
+    float: left;
+    width: 60px;
+    height: 60px;
+}
+
+.sb-post-thumbnail img {
+    width: 100%;
+    height: 100%;
+}
+
+.blog-list-small .blog-lists-title {
+    width: 74%;
+    float: right;
+    position: relative;top:-40px;
+    color: white;
+}
+
+.blog-lists li:first-child h3 a {
+    font-size: 14px;
+}
+.blog-list-small h3 a {
+    font-family: Segoe UI,Calibri,Arial;
+    color: white;
+}
+
+.blog-lists h3 a {
+    display: block;
+    font-weight: 400;
+    color: #363636;
+    text-decoration: none;
+    line-height: 1.27;
+}
+
+#post_content p img{
+    width: 90% !important;
+    height: auto;
+}
+
+.maga-excerpt img{
+    display: none;
+}
+
+.maga-excerpt h2{
+    font-size: 14px !important;
+}

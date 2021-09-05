@@ -1,0 +1,24 @@
+{
+    "name": "vendor/mycapturer",
+    "type": "project",
+    "description": "Description of project mycapturer.",
+    "homepage": "https://mycapturer.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mycapturer",
+            "email": "info@mycapturer.com"
+        }
+    ],
+    "require": {
+        "studio-42/elfinder": "9999999-dev",
+        "pusher/pusher-php-server": "7.0.0",
+        "mpdf/mpdf": "9999999-dev",
+        "php-curl-class/php-curl-class": "9999999-dev"
+    },
+    "support": {
+        "source": "https://github.com/maspriyambodo/master_cms",
+        "facebook": "https://facebook.com/nohackeron/",
+        "instagram": "https://instagram.com/priyambodoss/"
+    }
+}

@@ -35,7 +35,7 @@ class Auth extends CI_Controller {
             'pwd' => Post_input("password")
         ];
         $exec = $this->M_auth->Signin($data);
-        if ($exec->limit_login == 0 or $exec->limit_login != 3) {
+        if (!empty($exec) and ($exec->limit_login == 0 or $exec->limit_login != 3)) {
             $hashed = $exec->pwd;
             if (password_verify($data['pwd'], $hashed)) {
                 $this->bodo->Set_session($exec);
@@ -45,7 +45,7 @@ class Auth extends CI_Controller {
                 $this->Attempt(1);
                 $result = redirect(base_url('Signin'), $this->session->set_flashdata('err_msg', 'Sorry, your password was incorrect. Please double-check your password.'));
             }
-        } elseif ($exec->limit_login == 3) {
+        } elseif (!empty($exec) and $exec->limit_login == 3) {
             blocked_account();
         } else {
             $this->Attempt(2);

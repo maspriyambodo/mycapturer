@@ -7,23 +7,12 @@ class M_pwdmgr extends CI_Model {
     var $table = 'password_management';
     var $column_order = [null, 'owner', null, null, 'lastcheck', 'status_aktif', null]; //set column field database for datatable orderable
     var $column_search = ['owner', 'link', 'username', 'note']; //set column field database for datatable searchable 
-    var $order = ['id' => 'asc']; // default order 
-
-    private function role_name() {
-        $role_id = $this->bodo->Dec($this->session->userdata('role_id'));
-        if ($this->session->userdata('role_name') == 'Super User' and $role_id == 1) {
-            $exec = $this->db->select()
-                    ->from($this->table);
-        } else {
-            $exec = $this->db->select()
-                    ->from($this->table)
-                    ->where('password_management.syscreateuser', $this->bodo->Dec($this->session->userdata('id_user')), false);
-        }
-        return $exec;
-    }
+    var $order = ['id' => 'asc']; // default order
 
     private function _get_datatables_query() {
-        $this->role_name();
+        $this->db->select()
+                ->from($this->table)
+                ->where('password_management.syscreateuser', Dekrip($this->session->userdata('id_user')), false);
         $i = 0;
         foreach ($this->column_search as $item) { // loop column 
             if ($_POST['search']['value']) { // if datatable send POST for search
@@ -63,7 +52,9 @@ class M_pwdmgr extends CI_Model {
     }
 
     public function count_all() {
-        $this->role_name();
+        $this->db->select()
+                ->from($this->table)
+                ->where('password_management.syscreateuser', Dekrip($this->session->userdata('id_user')), false);
         return $this->db->count_all_results();
     }
 

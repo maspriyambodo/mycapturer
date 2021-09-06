@@ -20,3 +20,4 @@ application/logs/*
 /application/config
 /index.php
 /.htaccess
+/update.sh

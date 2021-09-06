@@ -49,6 +49,14 @@ ALTER TABLE `dt_post_report`
   ADD KEY `id_category` (`id_category`);
 
 --
+-- Indexes for table `dt_pwd`
+--
+ALTER TABLE `dt_pwd`
+  ADD PRIMARY KEY (`id`) USING BTREE,
+  ADD KEY `id_user` (`id_user`) USING BTREE,
+  ADD KEY `syscreateuser` (`syscreateuser`) USING BTREE;
+
+--
 -- Indexes for table `dt_services`
 --
 ALTER TABLE `dt_services`
@@ -199,6 +207,12 @@ ALTER TABLE `dt_post_report`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `dt_pwd`
+--
+ALTER TABLE `dt_pwd`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=224;
+
+--
 -- AUTO_INCREMENT for table `dt_services`
 --
 ALTER TABLE `dt_services`
@@ -226,7 +240,7 @@ ALTER TABLE `mt_country`
 -- AUTO_INCREMENT for table `sys_menu`
 --
 ALTER TABLE `sys_menu`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `sys_menu_group`
@@ -238,7 +252,7 @@ ALTER TABLE `sys_menu_group`
 -- AUTO_INCREMENT for table `sys_permissions`
 --
 ALTER TABLE `sys_permissions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `sys_roles`
@@ -276,6 +290,12 @@ ALTER TABLE `dt_post_comment`
 ALTER TABLE `dt_post_report`
   ADD CONSTRAINT `dt_post_report_ibfk_1` FOREIGN KEY (`id_category`) REFERENCES `dt_post` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   ADD CONSTRAINT `dt_post_report_ibfk_2` FOREIGN KEY (`id_category`) REFERENCES `dt_post_comment` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Constraints for table `dt_pwd`
+--
+ALTER TABLE `dt_pwd`
+  ADD CONSTRAINT `dt_pwd_ibfk_1` FOREIGN KEY (`syscreateuser`) REFERENCES `sys_users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `dt_users`

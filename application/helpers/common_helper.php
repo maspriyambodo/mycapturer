@@ -61,3 +61,11 @@ function _Upload($param) {
     }
     return $result;
 }
+
+function auth_sekuriti() {
+    $ci = get_instance();
+    $ci->output->set_status_header(200);
+    $ci->load->view('errors/cli/auth_sekuriti');
+    echo $ci->output->get_output();
+    exit(4);
+}

@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed, are you trying to signin backdoor?');
 
 class Auth extends CI_Controller {
 
@@ -12,8 +12,10 @@ class Auth extends CI_Controller {
     private function Check_session() {
         if ($this->session->userdata('id_user') and $this->session->userdata('uname') and $this->session->userdata('stat_aktif') and $this->session->userdata('role_id')) {
             $result = redirect(base_url('Dashboard'), 'refresh');
-        } elseif ($this->session->tempdata('penalty')) {
-            $result = show_404();
+        } elseif ($this->session->tempdata('auth_sekuriti')) {
+            $result = auth_sekuriti();
+        } elseif ($this->session->tempdata('blocked_account')) {
+            $result = blocked_account();
         } else {
             $result = true;
         }
@@ -66,13 +68,13 @@ class Auth extends CI_Controller {
             case 1:
                 $this->M_auth->Penalty($data);
                 if ($attempt == 3) {
-                    $this->session->set_tempdata('penalty', true, 300);
+                    $this->session->set_tempdata('blocked_account', true, 300);
                     blocked_account();
                 }
             case 2:
-                if ($attempt == 5) {
-                    $this->session->set_tempdata('penalty', true, 360);
-                    show_404();
+                if ($attempt == 5 or $attempt >= 5) {
+                    $this->session->set_tempdata('auth_sekuriti', true, 360);
+                    auth_sekuriti();
                 }
         }
     }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" >
     <head>
+        <base href="<?php echo base_url('Auth/'); ?>">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8;">
         <title>Account Blocked</title>
         <meta name="description" content="failed login page"/>
@@ -15,6 +16,7 @@
         <link href="<?php echo base_url('assets/css/themes/layout/brand/dark.css?v=7.0.6'); ?>" rel="stylesheet" type="text/css"/>
         <link href="<?php echo base_url('assets/css/themes/layout/aside/dark.css?v=7.0.6'); ?>" rel="stylesheet" type="text/css"/>        <!--end::Layout Themes-->
         <link href="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('favico')); ?>" rel="shortcut icon"/>
+        <meta http-equiv="refresh" content="305">
     </head>
     <body  id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
         <div class="d-flex flex-column flex-root">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 06, 2021 at 10:35 AM
+-- Generation Time: Sep 13, 2021 at 03:31 PM
 -- Server version: 8.0.26-0ubuntu0.20.04.2
 -- PHP Version: 7.4.23
 
@@ -20,5 +20,3 @@ SET time_zone = "+00:00";
 --
 -- Database: `mycapturer`
 --
-CREATE DATABASE IF NOT EXISTS `mycapturer` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `mycapturer`;

@@ -7,4 +7,4 @@ $autoload['drivers'] = [];
 $autoload['helper'] = ['form', 'url', 'html', 'file', 'common_helper'];
 $autoload['config'] = ['multi_menu'];
 $autoload['language'] = [];
-$autoload['model'] = ['Systems/M_default'];
+$autoload['model'] = ['Systems/M_default', 'M_notification'];

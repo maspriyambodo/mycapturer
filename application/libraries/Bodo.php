@@ -8,6 +8,7 @@ class Bodo {
 
     public function __construct() {
         $this->CI = &get_instance();
+        $this->role_id = $this->Dec($this->CI->session->userdata('role_id'));
     }
 
     public function Check_login() {
@@ -20,12 +21,11 @@ class Bodo {
     }
 
     public function Check_previlege($param) {
-        $role_id = $this->Dec($this->CI->session->userdata('role_id'));
         $exec = $this->CI->db->select()
                 ->from('sys_menu_select')
                 ->where([
                     'sys_menu_select.link' => $param,
-                    '`sys_menu_select`.`role_id`' => $role_id + false,
+                    '`sys_menu_select`.`role_id`' => $this->role_id + false,
                     '`sys_menu_select`.`view`' => 1 + false
                 ])
                 ->get()
@@ -44,6 +44,15 @@ class Bodo {
             $result = show_404();
         }
         return $result;
+    }
+
+    public function Count_notif() {
+        if ($this->role_id == 1) {
+            $exec = $this->CI->M_notification->Count_notif_su();
+        } else {
+            $exec = $this->CI->M_notification->Count_notif();
+        }
+        return $exec;
     }
 
     public function Dec($enc) {

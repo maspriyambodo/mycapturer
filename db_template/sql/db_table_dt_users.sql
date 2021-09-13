@@ -36,4 +36,5 @@ CREATE TABLE `dt_users` (
 --
 
 INSERT INTO `dt_users` (`id`, `sys_user_id`, `nama`, `jenis_kelamin`, `id_number`, `lahir_1`, `lahir_2`, `address_1`, `address_provinsi`, `address_kabupaten`, `address_kecamatan`, `address_kelurahan`, `negara`, `mail`, `telp`, `stat`, `syscreateuser`, `syscreatedate`, `sysupdateuser`, `sysupdatedate`, `sysdeleteuser`, `sysdeletedate`) VALUES
-(1, 1, 'XNXX', 1, '3175061303940001', 'JAKARTA', '1994-03-13', 'Jl. Raya Penggilingan No. 45', '31', '3175', '317506', '3175061003', 101, 'maspriyambodo@gmail.com', '081282309100', 1, 1, '1970-01-01 00:00:00', 1, '1970-01-01 00:00:00', 1, '1970-01-01 00:00:00');
+(1, 1, 'XNXX', 1, '3175061303940001', 'JAKARTA', '1994-03-13', 'Jl. Raya Penggilingan No. 45', '31', '3175', '317506', '3175061003', 101, 'maspriyambodo@gmail.com', '081282309100', 1, 1, '1970-01-01 00:00:00', 1, '1970-01-01 00:00:00', 1, '1970-01-01 00:00:00'),
+(2, 2, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 101, NULL, NULL, 1, 1, '2021-09-07 00:37:06', NULL, NULL, NULL, NULL);

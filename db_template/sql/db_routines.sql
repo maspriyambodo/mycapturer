@@ -176,19 +176,6 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sys_app_select` ()  BEGIN
 	
 END$$
 
-DROP PROCEDURE IF EXISTS `sys_app_select_select`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sys_app_select_select` ()  BEGIN
-	
-	SELECT
-		`sys_app_select`.`favico`,
-		`sys_app_select`.`logo`,
-		`sys_app_select`.`company_name`,
-		`sys_app_select`.`app_name`,
-		`sys_app_select`.`app_year`
-	FROM sys_app_select_select;
-	
-END$$
-
 DROP PROCEDURE IF EXISTS `sys_auth`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sys_auth` (IN `usernama` VARCHAR(100))  BEGIN
 

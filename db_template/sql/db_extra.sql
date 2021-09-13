@@ -11,6 +11,15 @@ ALTER TABLE `compro_option`
   ADD UNIQUE KEY `id` (`id`) USING BTREE;
 
 --
+-- Indexes for table `dt_notif`
+--
+ALTER TABLE `dt_notif`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`) USING BTREE,
+  ADD KEY `role_id` (`role_id`),
+  ADD KEY `syscreateuser` (`syscreateuser`);
+
+--
 -- Indexes for table `dt_portfolio`
 --
 ALTER TABLE `dt_portfolio`
@@ -177,6 +186,12 @@ ALTER TABLE `compro_option`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
+-- AUTO_INCREMENT for table `dt_notif`
+--
+ALTER TABLE `dt_notif`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `dt_portfolio`
 --
 ALTER TABLE `dt_portfolio`
@@ -210,7 +225,7 @@ ALTER TABLE `dt_post_report`
 -- AUTO_INCREMENT for table `dt_pwd`
 --
 ALTER TABLE `dt_pwd`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=224;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=226;
 
 --
 -- AUTO_INCREMENT for table `dt_services`
@@ -228,7 +243,7 @@ ALTER TABLE `dt_subscriber`
 -- AUTO_INCREMENT for table `dt_users`
 --
 ALTER TABLE `dt_users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `mt_country`
@@ -264,11 +279,18 @@ ALTER TABLE `sys_roles`
 -- AUTO_INCREMENT for table `sys_users`
 --
 ALTER TABLE `sys_users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `dt_notif`
+--
+ALTER TABLE `dt_notif`
+  ADD CONSTRAINT `dt_notif_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `sys_roles` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `dt_notif_ibfk_2` FOREIGN KEY (`syscreateuser`) REFERENCES `dt_users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `dt_post`

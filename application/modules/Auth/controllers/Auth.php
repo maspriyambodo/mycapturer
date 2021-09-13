@@ -72,9 +72,9 @@ class Auth extends CI_Controller {
                     blocked_account();
                 }
             case 2:
-                if ($attempt == 5 or $attempt >= 5) {
+                if ($attempt == 5) {
                     $this->session->set_tempdata('auth_sekuriti', true, 360);
-                    auth_sekuriti();
+                    show_404();
                 }
         }
     }

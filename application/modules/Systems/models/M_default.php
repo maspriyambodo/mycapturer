@@ -7,7 +7,6 @@ class M_default extends CI_Model {
     public function Sys() {
         $exec = $this->db->query('CALL sys_app_select();')->row();
         mysqli_next_result($this->db->conn_id);
-//        print_r($exec->favico);die;
         return $exec;
     }
 
@@ -30,13 +29,7 @@ class M_default extends CI_Model {
         return $item;
     }
 
-    public function Roles2($param) {// ini function original
-        $exec = $this->db->query('CALL sys_roles_select("' . $param . '");');
-        mysqli_next_result($this->db->conn_id);
-        return $exec;
-    }
-
-    public function Roles($param) {// ini function modifan
+    public function Roles($param) {
         $role_id = $this->bodo->Dec($this->session->userdata('role_id'));
         if (!$role_id or empty($role_id)) {
             $exec = redirect(base_url('Signin'), $this->session->set_flashdata('err_msg', 'you need signin to access the system'));

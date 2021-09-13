@@ -139,7 +139,8 @@ unset($_SESSION['succ_msg']);
                 {extend: 'pdfHtml5', footer: true}
             ]
         });
-        $('.custom-select').select2();
+        $('#gr_parent_edit').select2();
+        $('#gr_parent_add').select2();
     };
 <?php require_once 'permisi.js'; ?>
 </script>

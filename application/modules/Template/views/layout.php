@@ -27,8 +27,8 @@ $group_menu = $this->M_default->Group_menu();
         <link href="<?php echo base_url('assets/plugins/global/plugins.bundle.css'); ?>" rel="stylesheet" type="text/css" crossorigin="anonymous"/>
         <link href="<?php echo base_url('assets/plugins/custom/prismjs/prismjs.bundle.css'); ?>" rel="stylesheet" type="text/css" crossorigin="anonymous"/>
         <link href="<?php echo base_url('assets/css/style.bundle.css'); ?>" rel="stylesheet" type="text/css" crossorigin="anonymous"/>
-        <link href="<?php echo base_url('assets/css/themes/layout/header/base/light.css'); ?>" rel="stylesheet" type="text/css" crossorigin="anonymous"/>
-        <link href="<?php echo base_url('assets/css/themes/layout/header/menu/light.css'); ?>" rel="stylesheet" type="text/css" crossorigin="anonymous"/>
+        <link href="<?php echo base_url('assets/css/themes/layout/header/base/dark.css'); ?>" rel="stylesheet" type="text/css" crossorigin="anonymous"/>
+        <link href="<?php echo base_url('assets/css/themes/layout/header/menu/dark.css'); ?>" rel="stylesheet" type="text/css" crossorigin="anonymous"/>
         <link href="<?php echo base_url('assets/css/themes/layout/brand/dark.css'); ?>" rel="stylesheet" type="text/css" crossorigin="anonymous"/>
         <link href="<?php echo base_url('assets/css/themes/layout/aside/dark.css'); ?>" rel="stylesheet" type="text/css" crossorigin="anonymous"/>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" rel="stylesheet"/>
@@ -53,9 +53,9 @@ $group_menu = $this->M_default->Group_menu();
         <div class="d-flex flex-column flex-root">
             <div class="d-flex flex-row flex-column-fluid page">
                 <div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
-                    <div class="brand flex-column-auto" id="kt_brand" style="height:auto;">
+                    <div class="brand flex-column-auto" id="kt_brand" style="height:65px;">
                         <a href="javascript:void(0);" class="brand-logo">
-                            <img alt="company_logo" src="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('logo')); ?>" class="img-fluid" style="margin: 15px 0px;width:40px;"/>
+                            <img alt="company_logo" src="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('logo')); ?>" class="img-fluid" style="margin: 15px 0px;width:55px;"/>
                         </a>
                         <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle" aria-label="brand-toggle">
                             <span class="svg-icon svg-icon svg-icon-xl">

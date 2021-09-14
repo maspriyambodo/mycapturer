@@ -37,7 +37,7 @@ $group_menu = $this->M_default->Group_menu();
     <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
         <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
             <a href="javascript:void(0);">
-                <img alt="company_logo" src="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('logo')); ?>" class="img-fluid" style="margin: 15px 0px;width: 30%;"/>
+                <img alt="company_logo" src="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('logo')); ?>" class="img-fluid" style="margin: 15px 0px;height:55px;"/>
             </a>
             <div class="d-flex align-items-center">
                 <button class="btn p-0 burger-icon burger-icon-left" id="kt_aside_mobile_toggle">

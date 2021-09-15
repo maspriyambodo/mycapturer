@@ -3,6 +3,9 @@
         <div class="col-12 align-self-center text-left">
             <h4 class="title">Popular <i class="fas fa-fire-alt text-danger"></i></h4>
             <div class="item widget-categories">
+                <script async custom-element="amp-auto-ads"
+                        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+                </script>
                 <ul class="list-group list-group-flush">
                     <?php
                     foreach ($asside_popular as $asside_popular) {

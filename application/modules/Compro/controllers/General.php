@@ -1,22 +1,7 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-/*
- * Product:        System of AU+ PRODUCTION
- * License Type:   Company
- * Access Type:    Multi-User
- * License:        https://maspriyambodo.com
- * maspriyambodo@gmail.com
- * 
- * Thank you,
- * maspriyambodo
- */
 
-/**
- * Description of Profile
- *
- * @author centos
- */
 class General extends CI_Controller {
 
     public function __construct() {
@@ -109,8 +94,8 @@ class General extends CI_Controller {
         $option_name = str_replace(' ', '_', Post_input('nametxt'));
         $data = [
             'option_name' => $option_name,
-            'option_value' => Post_input('valuetxt'),
-            'description' => Post_input('desctxt'),
+            'option_value' => $this->input->post('valuetxt', false),
+            'description' => $this->input->post('desctxt', false),
             'syscreateuser' => $this->user,
             'syscreatedate' => date('Y-m-d H:i:s')
         ];
@@ -135,8 +120,8 @@ class General extends CI_Controller {
         $id = $this->bodo->Dec(Post_input('e_id'));
         $data = [
             'option_name' => Post_input('e_nametxt'),
-            'option_value' => Post_input('e_valuetxt'),
-            'description' => Post_input('e_desctxt'),
+            'option_value' => $this->input->post('e_valuetxt', false),
+            'description' => $this->input->post('e_desctxt', false),
             'sysupdateuser' => $this->user + false,
             'sysupdatedate' => date('Y-m-d H:i:s')
         ];

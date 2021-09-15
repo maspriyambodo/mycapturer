@@ -37,6 +37,11 @@
         } else {
             null;
         }
+        if (!empty($compro['google_analytics'])) {
+            echo $compro['google_analytics'];
+        } else {
+            null;
+        }
         ?>
     </head>
     <body data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0">

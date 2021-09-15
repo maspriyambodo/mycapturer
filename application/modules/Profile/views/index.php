@@ -84,8 +84,13 @@
                 </form>
             </div>
         </div>
-        <script async custom-element="amp-auto-ads"
-                src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
-        </script>
+        <amp-ad height="320"
+                type="adsense"
+                data-ad-client="ca-pub-1136946608431939"
+                data-ad-slot="1450085642"
+                data-auto-format="rspv"
+                data-full-width="">
+            <div overflow=""></div>
+        </amp-ad>
     </div>
 </section>

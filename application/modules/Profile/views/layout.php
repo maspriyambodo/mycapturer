@@ -41,6 +41,7 @@
             null;
         }
         ?>
+        <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
     </head>
     <body data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0">
         <?php

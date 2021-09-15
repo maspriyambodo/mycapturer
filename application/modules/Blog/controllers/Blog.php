@@ -10,14 +10,12 @@ class Blog extends CI_Controller {
     }
 
     public function index() {
-        $paginate = $this->Paginate();
-        $asside_tags = $this->Tags_popular();
         $data = [
-            'post' => $this->model->index($paginate),
+            'post' => $this->model->index($this->Paginate()),
             'asside_category' => $this->model->Category(),
             'asside_popular' => $this->model->Popular(),
             'asside_recent' => $this->model->Recent_post(),
-            'asside_tags' => $asside_tags,
+            'asside_tags' => $this->Tags_popular(),
             'csrf' => $this->bodo->Csrf(),
             'siteTitle' => $this->bodo->Sys('company_name'),
             'pageTitle' => 'Blog Posts',

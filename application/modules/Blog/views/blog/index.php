@@ -26,9 +26,17 @@
                                     <ul>	 		
                                         <li class="full-left clearfix">	
                                             <div class="magbig-thumb">
-                                                <a href="<?php echo base_url('Blog/Read/' . $post_title); ?>" title="<?php echo $post->post_title; ?>" class="post-thumbnail">
-                                                    <img src="<?php echo base_url('assets/images/blog/thumb/' . $post->post_thumbnail); ?>" alt="<?php echo $post->post_title; ?>">
-                                                </a>
+                                                <?php
+                                                if (!empty($post->post_thumbnail)) {
+                                                    echo '<a href="' . base_url('Blog/Read/' . $post_title) . '" title="' . $post->post_title . '" class="post-thumbnail">'
+                                                    . '<img src="' . base_url('assets/images/blog/thumb/' . $post->post_thumbnail) . '" alt="' . $post->post_title . '">'
+                                                    . '</a>';
+                                                } else {
+                                                    echo '<a href="' . base_url('Blog/Read/' . $post_title) . '" title="' . $post->post_title . '" class="post-thumbnail">'
+                                                    . '<img src="' . base_url('assets/images/blog/thumb/no_pict.png') . '" alt="' . $post->post_title . '">'
+                                                    . '</a>';
+                                                }
+                                                ?>
                                             </div>
                                             <div class="list-block">
                                                 <h1>

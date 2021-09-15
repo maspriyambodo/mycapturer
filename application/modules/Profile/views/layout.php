@@ -311,5 +311,6 @@
         <div id="scroll-to-top" class="scroll-to-top" style="display: none;">
             <a href="#header" class="smooth-anchor"> <i class="icon-arrow-up"></i> </a>
         </div>
+        <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "afb174cd21c44d79958a81ccadeb531e"}'></script>
     </body>
 </html>

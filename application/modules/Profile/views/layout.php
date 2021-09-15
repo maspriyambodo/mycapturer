@@ -21,15 +21,8 @@
         <link rel="apple-touch-icon" href="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('favico')); ?>" />
         <link rel="apple-touch-icon" sizes="72x72" href="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('favico')); ?>" />
         <link rel="apple-touch-icon" sizes="114x114" href="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('favico')); ?>" />
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.css'); ?>" />
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/slider.css'); ?>" />
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/main.css'); ?>" />
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/icons.css'); ?>" />
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/animation.css'); ?>" />
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/gallery.css'); ?>" />
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/cookie-notice.css'); ?>" />
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/default.css'); ?>" />
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/theme-light-blue.css'); ?>" />
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet"/>
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/compro.min.css'); ?>" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <?php
         if (!empty($compro['head_tagmanager'])) {

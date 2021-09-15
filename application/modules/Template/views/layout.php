@@ -59,7 +59,7 @@ $group_menu = $this->M_default->Group_menu();
                         </a>
                         <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle" aria-label="brand-toggle">
                             <span class="svg-icon svg-icon svg-icon-xl">
-                                <i class="fas fa-angle-double-left"></i>
+                                <i class="fas fa-bars"></i>
                             </span>
                         </button>
                     </div>

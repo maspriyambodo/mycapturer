@@ -42,6 +42,11 @@
         } else {
             null;
         }
+        if (!empty($compro['google_adsense'])) {
+            echo $compro['google_adsense'];
+        } else {
+            null;
+        }
         ?>
     </head>
     <body data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0">

@@ -65,17 +65,15 @@ class Blog extends CI_Controller {
 
     public function Read($title) {
         $post_title = str_replace(['%21', '%2A', '%27', '%28', '%29', '%3B', '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%23', '%5B', '%5D', '%20', '%22'], ['!', '*', "'", '(', ')', ';', ':', '@', '&', '=', '+', '$', ',', '/', '?', '#', '[', ']', ' ', '"'], $title);
-        $asside_tags = $this->Tags_popular();
         $post = $this->model->Read($post_title);
-        $post_comment = $this->model->Post_comment($post['id']);
         $data = [
             'post' => $post,
             'asside_category' => $this->model->Category(),
             'asside_popular' => $this->model->Popular(),
             'asside_recent' => $this->model->Recent_post(),
             'asside_related' => $this->model->Related_post($post_title),
-            'asside_tags' => $asside_tags,
-            'post_comment' => $post_comment,
+            'asside_tags' => $this->Tags_popular(),
+            'post_comment' => $this->Post_comment($post['id']),
             'csrf' => $this->bodo->Csrf(),
             'siteTitle' => $post_title . ' | ' . $this->bodo->Sys('company_name'),
             'pageTitle' => 'Read Post',
@@ -85,6 +83,24 @@ class Blog extends CI_Controller {
         $data['sidebar'] = $this->parser->parse('blog/sidebar', $data, true);
         $data['content'] = $this->parser->parse('blog/v_read', $data, true);
         return $this->parser->parse('Profile/layout', $data);
+    }
+
+    private function Post_comment($id) {
+        $exec = $this->model->Post_comment($id);
+        if (!empty($exec)) {
+            foreach ($exec as $key => $value) {
+                if ($value->comment_parent == 0) {
+                    $parent[$key] = $exec[$key];
+                    unset($exec[$key]);
+                }
+            }
+            $new_parent['parent'] = $parent;
+            $childern['childern'] = $exec;
+            $comment = array_merge($new_parent, $childern);
+        } else {
+            $comment = '';
+        }
+        return $comment;
     }
 
     private function Tags_popular() {

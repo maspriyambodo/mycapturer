@@ -110,7 +110,7 @@
                 <?php
                 if (!empty($post_comment['childern'])) {
                     for ($i = 0; $i < $tot_comment; $i++) {
-                        if ($post_comment['childern'][$i]->comment_parent == $comment->id) {
+                        if (!empty($post_comment['childern'][$i]) and ($post_comment['childern'][$i]->comment_parent == $comment->id)) {
                             $child_comentdate = new DateTime($post_comment['childern'][$i]->comment_date);
                             $child_date = $child_comentdate->format('Y F d H:i:s');
                             echo '<ul class="children">'

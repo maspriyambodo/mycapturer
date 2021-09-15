@@ -128,15 +128,7 @@ class M_Blog extends CI_Model {
                 ->order_by('dt_post_comment.comment_date', 'ASC')
                 ->get()
                 ->result();
-        foreach ($exec as $key => $value) {
-            if ($value->comment_parent == 0) {
-                $parent[$key] = $exec[$key];
-                unset($exec[$key]);
-            }
-        }
-        $new_parent['parent'] = $parent;
-        $childern['childern'] = $exec;
-        return array_merge($new_parent, $childern);
+        return $exec;
     }
 
     public function Save_comment($data) {

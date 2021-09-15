@@ -31,8 +31,22 @@
         <link rel="stylesheet" href="<?php echo base_url('assets/css/default.css'); ?>" />
         <link rel="stylesheet" href="<?php echo base_url('assets/css/theme-light-blue.css'); ?>" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <?php
+        if (!empty($compro['head_tagmanager'])) {
+            echo $compro['head_tagmanager'];
+        } else {
+            null;
+        }
+        ?>
     </head>
     <body data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0">
+        <?php
+        if (!empty($compro['body_tagmanager'])) {
+            echo $compro['body_tagmanager'];
+        } else {
+            null;
+        }
+        ?>
         <header id="header">
             <nav class="navbar navbar-expand aos-init aos-animate navbar-sticky visible">
                 <div class="container header">

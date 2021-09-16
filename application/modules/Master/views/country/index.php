@@ -37,7 +37,6 @@ if ($privilege['update']) {
 }
 if ($privilege['delete']) {
     require_once 'modal_delete.php';
-    require_once 'modal_activate.php';
 } else {
     null;
 }

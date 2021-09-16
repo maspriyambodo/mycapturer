@@ -13,13 +13,32 @@ class Search extends CI_Controller {
     public function Category() {
         $query = str_replace(['%21', '%2A', '%27', '%28', '%29', '%3B', '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%23', '%5B', '%5D', '%20', '%22'], ['!', '*', "'", '(', ')', ';', ':', '@', '&', '=', '+', '$', ',', '/', '?', '#', '[', ']', ' ', '"'], Post_get('q'));
         $paginate = $this->Paginate('Category', $query);
-        $asside_tags = $this->Tags_popular();
         $data = [
             'post' => $this->model->Category($paginate, $query),
             'asside_category' => $this->model_blog->Category(),
             'asside_popular' => $this->model_blog->Popular(),
             'asside_recent' => $this->model_blog->Recent_post(),
-            'asside_tags' => $asside_tags,
+            'asside_tags' => $this->Tags_popular(),
+            'csrf' => $this->bodo->Csrf(),
+            'siteTitle' => $this->bodo->Sys('company_name'),
+            'pageTitle' => 'Blog Posts',
+            'description' => substr($this->bodo->Compro()['meta_description'], 0, 150)
+        ];
+        $data['slider'] = $this->parser->parse('Profile/section_slider2', $data, true);
+        $data['sidebar'] = $this->parser->parse('blog/sidebar', $data, true);
+        $data['content'] = $this->parser->parse('blog/index', $data, true);
+        return $this->parser->parse('Profile/layout', $data);
+    }
+
+    public function Post() {
+        $query = str_replace(['%21', '%2A', '%27', '%28', '%29', '%3B', '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%23', '%5B', '%5D', '%20', '%22'], ['!', '*', "'", '(', ')', ';', ':', '@', '&', '=', '+', '$', ',', '/', '?', '#', '[', ']', ' ', '"'], Post_get('searchtxt'));
+        $paginate = $this->Paginate('Post', $query);
+        $data = [
+            'post' => $this->model->Get_post($paginate, $query),
+            'asside_category' => $this->model_blog->Category(),
+            'asside_popular' => $this->model_blog->Popular(),
+            'asside_recent' => $this->model_blog->Recent_post(),
+            'asside_tags' => $this->Tags_popular(),
             'csrf' => $this->bodo->Csrf(),
             'siteTitle' => $this->bodo->Sys('company_name'),
             'pageTitle' => 'Blog Posts',
@@ -34,13 +53,12 @@ class Search extends CI_Controller {
     public function Tags() {
         $query = str_replace(['%21', '%2A', '%27', '%28', '%29', '%3B', '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%23', '%5B', '%5D', '%20', '%22'], ['!', '*', "'", '(', ')', ';', ':', '@', '&', '=', '+', '$', ',', '/', '?', '#', '[', ']', ' ', '"'], Post_get('q'));
         $paginate = $this->Paginate('Tags', $query);
-        $asside_tags = $this->Tags_popular();
         $data = [
             'post' => $this->model->Tags($paginate, $query),
             'asside_category' => $this->model_blog->Category(),
             'asside_popular' => $this->model_blog->Popular(),
             'asside_recent' => $this->model_blog->Recent_post(),
-            'asside_tags' => $asside_tags,
+            'asside_tags' => $this->Tags_popular(),
             'csrf' => $this->bodo->Csrf(),
             'siteTitle' => $this->bodo->Sys('company_name'),
             'pageTitle' => 'Blog Posts',
@@ -55,7 +73,10 @@ class Search extends CI_Controller {
     private function Paginate($param, $query) {
         if ($param == 'Category') {
             $tot = $this->model->TotCategory($query);
-        } else {
+        } elseif ($param == 'Post') {
+            $tot = $this->model->TotPost($query);
+        }
+        else {
             $tot = $this->model->Tot_tags($query);
         }
         $this->load->library('pagination');

@@ -7,6 +7,8 @@
                 echo '<h3>Category: ' . Post_get('q') . '</h3>';
             } elseif ($this->uri->segment(3) == 'Tags') {
                 echo '<h3>Post Tags: ' . Post_get('q') . '</h3>';
+            } elseif ($this->uri->segment(3) == 'Post') {
+                echo '<h3>Search: ' . Post_get('searchtxt') . '</h3>';
             } else {
                 null;
             }

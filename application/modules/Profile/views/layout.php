@@ -249,7 +249,7 @@
                 <div class="modal-content full">
                     <div class="modal-header" data-dismiss="modal">Search <i class="icon-close"></i></div>
                     <div class="modal-body">
-                        <form class="row">
+                        <form class="row" action="<?php echo base_url('Blog/Search/Post/'); ?>">
                             <div class="col-12 p-0 align-self-center">
                                 <div class="row">
                                     <div class="col-12 p-0 pb-3">
@@ -258,7 +258,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-12 p-0 input-group"><input type="text" class="form-control" placeholder="Enter Keywords" /></div>
+                                    <div class="col-12 p-0 input-group"><input type="text" name="searchtxt" class="form-control" autocomplete="off" placeholder="Enter Keywords"/></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 p-0 input-group align-self-center">
@@ -266,6 +266,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <input type="hidden" name="<?php echo $csrf['name'] ?>" value="<?php echo $csrf['hash'] ?>"/>
                         </form>
                     </div>
                 </div>

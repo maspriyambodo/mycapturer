@@ -266,7 +266,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <input type="hidden" name="<?php echo $csrf['name'] ?>" value="<?php echo $csrf['hash'] ?>"/>
+                            <input type="hidden" name="token" value="<?php echo $csrf['hash'] ?>"/>
                         </form>
                     </div>
                 </div>

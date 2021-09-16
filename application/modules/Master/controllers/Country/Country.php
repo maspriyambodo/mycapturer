@@ -33,14 +33,11 @@ class Country extends CI_Controller {
                 $editbtn = null;
             }
             if ($privilege['delete'] and $value->stat) {
-                $activebtn = null;
                 $delbtn = '<button id="delbtn" type="button" class="btn btn-icon btn-danger btn-xs" title="Delete Country" value="' . $id . '" onclick="Delete(this.value)"><i class="far fa-trash-alt"></i></button>';
             } elseif ($privilege['delete'] and!$value->stat) {
                 $delbtn = null;
-                $activebtn = '<button id="actvbtn" type="button" class="btn btn-icon btn-default btn-xs" title="Set Active" value="' . $id . '" onclick="Active(this.value)"><i class="fas fa-unlock text-success"></i></button>';
             } else {
                 $delbtn = null;
-                $activebtn = null;
             }
             $no++;
             $row = [];
@@ -49,7 +46,7 @@ class Country extends CI_Controller {
             $row[] = $value->nama_country;
             $row[] = $flags;
             $row[] = $stat;
-            $row[] = '<div class="btn-group">' . $editbtn . $delbtn . $activebtn . '</div>';
+            $row[] = '<div class="btn-group">' . $editbtn . $delbtn . '</div>';
             $data[] = $row;
         }
         return $this->_list($data, $privilege);

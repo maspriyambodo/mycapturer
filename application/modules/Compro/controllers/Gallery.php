@@ -260,4 +260,14 @@ class Gallery extends CI_Controller {
         $this->model->Delete($data, $id);
     }
 
+    public function Active() {
+        $id = Dekrip(Post_input('act_id'));
+        $data = [
+            'stat' => 1 + false,
+            'sysupdateuser' => $this->user + false,
+            'sysupdatedate' => date('Y-m-d H:i:s')
+        ];
+        $this->model->Active($data, $id);
+    }
+
 }

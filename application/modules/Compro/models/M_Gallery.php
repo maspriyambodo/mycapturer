@@ -112,5 +112,20 @@ class M_Gallery extends CI_Model {
         }
         return $result;
     }
+    
+    public function Active($data, $id) {
+        $this->db->trans_begin();
+        $this->db->set($data)
+                ->where('`dt_portfolio`.`id`', $id, false)
+                ->update('dt_portfolio');
+        if ($this->db->trans_status() === false) {
+            $this->db->trans_rollback();
+            $result = redirect(base_url('Compro/Gallery/index/'), $this->session->set_flashdata('err_msg', 'failed, error while activing gallelry'));
+        } else {
+            $this->db->trans_commit();
+            $result = redirect(base_url('Compro/Gallery/index/'), $this->session->set_flashdata('succ_msg', 'success, gallery lists has been Activated'));
+        }
+        return $result;
+    }
 
 }

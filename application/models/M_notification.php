@@ -19,12 +19,13 @@ class M_notification extends CI_Model {
     }
 
     public function Count_notif() {// menghitung notifikasi untuk akses selain super user
+        $role_id = Dekrip($this->session->userdata('role_id'));
         $exec = $this->db->select('dt_notif.id')
                 ->from('dt_notif')
                 ->join('sys_roles', 'dt_notif.role_id = sys_roles.id', 'INNER')
                 ->where([
                     '`dt_notif`.`stat`', 1, false,
-                    '`sys_roles`.`parent_id`', $this->role_id, false
+                    '`sys_roles`.`parent_id`', $role_id, false
                 ])
                 ->count_all_results();
         return $exec;

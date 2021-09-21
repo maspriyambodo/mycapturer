@@ -94,18 +94,9 @@
                         sel.add(opt, sel.options[i]);
                     }
                 } else {
-                    var grup_nama = $('#gr_menu option:selected').text();
-                    var prefix_order;
-                    if (grup_nama == 'Applications') {
-                        prefix_order = 100;
-                    } else if (grup_nama == 'Report') {
-                        prefix_order = 200;
-                    } else if (grup_nama == 'Systems') {
-                        prefix_order = 300;
-                    }
                     var sel = document.getElementById("order_no");
                     var opt = document.createElement("option");
-                    opt.value = prefix_order;
+                    opt.value = 'undefined';
                     opt.text = 'First';
                     sel.add(opt, sel.options[0]);
                 }

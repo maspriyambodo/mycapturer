@@ -243,6 +243,7 @@ FROM sys_menu_select
 WHERE sys_menu_select.stat_menu = 1
 AND sys_menu_select.role_id = user_role
 AND sys_menu_select.id_group_menu = menu_grup
+GROUP BY sys_menu_select.order_no
 ORDER BY sys_menu_select.order_no, sys_menu_select.id_group_menu ASC;
 
 END$$

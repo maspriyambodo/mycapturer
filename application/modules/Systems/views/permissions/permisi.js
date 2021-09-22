@@ -41,6 +41,7 @@ function Get_access(val) {
                     "data": data.value,
                     columns: [
                         {data: 'nama_menu', title: "MENU"},
+                        {data: 'group_menu', title: "GROUP"},
                         {
                             title: "VIEW",
                             data: null,

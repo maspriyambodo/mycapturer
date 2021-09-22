@@ -16,6 +16,7 @@
                             <thead class="text-center text-uppercase">
                                 <tr role="row">
                                     <th>MENU</th>
+                                    <th>GROUP</th>
                                     <th>VIEW</th>
                                     <th>CREATE</th>
                                     <th>READ</th>

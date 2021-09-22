@@ -485,6 +485,7 @@ DROP PROCEDURE IF EXISTS `sys_permission_select`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sys_permission_select` (IN `permisi_id` INT)  BEGIN
 SELECT `sys_menu_select`.`id_menu`,
 `sys_menu_select`.`nama_menu`,
+`sys_menu_select`.`group_menu`,
 `sys_menu_select`.`grup_nama`,
 `sys_menu_select`.`view`, `sys_menu_select`.`create`,
 `sys_menu_select`.`read`, `sys_menu_select`.`update`, `sys_menu_select`.`delete`

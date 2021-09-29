@@ -70,7 +70,7 @@
         <section class="my-4">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-8 d-xs-block col-xs-12 col-12">
+                    <div class="col-md-8 d-xs-block col-xs-12 col-12 my-4">
                         <div id="bgndVideo" class="player">Video Title</div>
                     </div>
                     <div class="col-md-4"><!-- d-sm-none d-xl-block -->

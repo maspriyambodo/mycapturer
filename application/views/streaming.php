@@ -72,7 +72,7 @@
                     <div class="col-md-8 d-xs-block col-xs-12 col-12">
                         <div id="bgndVideo" class="player">Video Title</div>
                     </div>
-                    <div class="col-md-4 d-sm-none d-xl-block">
+                    <div class="col-md-4"><!-- d-sm-none d-xl-block -->
                         <div class="card" style="height:100%;">
                             <div class="card-header">
                                 <div class="card-title">

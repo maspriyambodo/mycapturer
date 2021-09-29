@@ -10,7 +10,7 @@ class Notification extends CI_Controller {
         $this->role_id = Dekrip($this->session->userdata('role_id'));
         $this->load->library('App_notification');
         $this->load->model('M_notification', 'model');
-        $this->bodo->Check_login();
+        //$this->bodo->Check_login();
     }
 
     public function index() {
@@ -32,6 +32,11 @@ class Notification extends CI_Controller {
             $result = $this->app_notification->Count_notif();
         }
         return $result;
+    }
+
+    public function Test() {
+        //modul untuk youtube player
+        $this->load->view('ytplayer');
     }
 
     public function Save_($param) {

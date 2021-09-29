@@ -54,17 +54,18 @@
         <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-custom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                    <img src="<?php echo base_url('assets/images/logo_festival.png'); ?>" alt="Festival Sertifikasiku"/>
-                </a>
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <img src="<?php echo base_url('assets/images/logo_festival.png'); ?>" alt="Festival Sertifikasiku"/>
+                        </a>
+                        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                    </ul>
-                </div>
-                <div class="d-flex">
-                    <button type="button" class="btn btn-custom ms-4">Masuk</button>
-                    <button type="button" class="btn btn-custom ms-4">Daftar</button>
-                </div>
+                            </ul>
+                        </div>
+                
+                <div class="text-right">
+                            <button type="button" class="btn btn-custom ms-2">Masuk</button>
+                            <button type="button" class="btn btn-custom ms-2">Daftar</button>
+                        </div>
             </div>
         </nav>
         <section class="my-4">
@@ -89,25 +90,25 @@
                                     <b class="username_chat">Mamat</b>
                                     <span class="ms-2 text-muted">​Ayooo NTT qm pasti bisa, tunjukan kebolehan qm</span>
                                 </div>
-                                
+
                                 <div class="form-group mb-2">
                                     <img class="img-fluid pict_user_chat rounded-circle" src="<?php echo base_url('assets/images/unnamed.jpg'); ?>" alt="username"/>
                                     <b class="username_chat">Mamat</b>
                                     <span class="ms-2 text-muted">​Ayooo NTT qm pasti bisa, tunjukan kebolehan qm</span>
                                 </div>
-                                
+
                                 <div class="form-group mb-2">
                                     <img class="img-fluid pict_user_chat rounded-circle" src="<?php echo base_url('assets/images/unnamed.jpg'); ?>" alt="username"/>
                                     <b class="username_chat">Mamat</b>
                                     <span class="ms-2 text-muted">​Ayooo NTT qm pasti bisa, tunjukan kebolehan qm</span>
                                 </div>
-                                
+
                                 <div class="form-group mb-2">
                                     <img class="img-fluid pict_user_chat rounded-circle" src="<?php echo base_url('assets/images/unnamed.jpg'); ?>" alt="username"/>
                                     <b class="username_chat">Mamat</b>
                                     <span class="ms-2 text-muted">​Ayooo NTT qm pasti bisa, tunjukan kebolehan qm</span>
                                 </div>
-                                
+
                                 <div class="form-group mb-2">
                                     <img class="img-fluid pict_user_chat rounded-circle" src="<?php echo base_url('assets/images/unnamed.jpg'); ?>" alt="username"/>
                                     <b class="username_chat">Mamat</b>
@@ -118,25 +119,25 @@
                                     <b class="username_chat">Mamat</b>
                                     <span class="ms-2 text-muted">​Ayooo NTT qm pasti bisa, tunjukan kebolehan qm</span>
                                 </div>
-                                
+
                                 <div class="form-group mb-2">
                                     <img class="img-fluid pict_user_chat rounded-circle" src="<?php echo base_url('assets/images/unnamed.jpg'); ?>" alt="username"/>
                                     <b class="username_chat">Mamat</b>
                                     <span class="ms-2 text-muted">​Ayooo NTT qm pasti bisa, tunjukan kebolehan qm</span>
                                 </div>
-                                
+
                                 <div class="form-group mb-2">
                                     <img class="img-fluid pict_user_chat rounded-circle" src="<?php echo base_url('assets/images/unnamed.jpg'); ?>" alt="username"/>
                                     <b class="username_chat">Mamat</b>
                                     <span class="ms-2 text-muted">​Ayooo NTT qm pasti bisa, tunjukan kebolehan qm</span>
                                 </div>
-                                
+
                                 <div class="form-group mb-2">
                                     <img class="img-fluid pict_user_chat rounded-circle" src="<?php echo base_url('assets/images/unnamed.jpg'); ?>" alt="username"/>
                                     <b class="username_chat">Mamat</b>
                                     <span class="ms-2 text-muted">​Ayooo NTT qm pasti bisa, tunjukan kebolehan qm</span>
                                 </div>
-                                
+
                                 <div class="form-group mb-2">
                                     <img class="img-fluid pict_user_chat rounded-circle" src="<?php echo base_url('assets/images/unnamed.jpg'); ?>" alt="username"/>
                                     <b class="username_chat">Mamat</b>

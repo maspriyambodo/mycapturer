@@ -51,6 +51,33 @@
             .slick_wrap{
                 margin:0px 5%;
             }
+            #chat_on_mobile{
+                background: #FFFFFF;
+                box-shadow: 0px -6px 12px rgba(0, 0, 0, 0.1);
+                border-radius: 10px 10px 0px 0px;
+            }
+            .title_txt{
+                position: absolute;
+                left: 4.72%;
+                right: 62.22%;
+                top: 0;
+                bottom: 0;
+
+                font-family: GalanoGrotesque-SemiBold;
+                font-size: 14px;
+                line-height: 16px;
+                display: flex;
+                align-items: center;
+
+                color: #7A7A7A;
+            }
+            .title_icon{
+                float: right;
+                left: 21.01%;
+                right: 21%;
+                top: 30%;
+                bottom: 36%;
+            }
         </style>
     </head>
     <body>
@@ -71,7 +98,7 @@
                 </div>
             </div>
         </nav>
-        <section class="my-4">
+        <section id="main_webinar" class="my-4 clearfix">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-8 d-xs-block col-xs-12 col-12 my-4">
@@ -157,7 +184,7 @@
                 </div>
             </div>
         </section>
-        <section class="my-4">
+        <section id="webinar_title" class="my-4 clearfix">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-8">
@@ -171,7 +198,7 @@
                 </div>
             </div>
         </section>
-        <section class="my-4 bg-carousel">
+        <section id="carousel" class="my-4 bg-carousel clearfix">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-2">
@@ -219,6 +246,41 @@
                             </div>
                         </div>  
                     </div>
+                </div>
+            </div>
+        </section>
+        <section class="d-block clearfix my-4">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4 bg-info">
+                        <div style="width:100%;height:300px;">
+                            <div class="text-center">
+                                <h4 style="padding:30% 0px;">300 x 600 px</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2 bg-success">
+                        <div style="width:100%;height:300px;">
+                            <div class="text-center">
+                                <h4 style="padding:35% 0px;">300 x 250 px</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="chat_on_mobile" class="d-block d-sm-none fixed-bottom clearfix">
+            <div class="container">
+                <div class="form-group">
+                    <span class="title_txt">Live Chat</span>
+                </div>
+                <div class="form-group">
+                    <span class="title_icon"><i class="fas fa-chevron-up"></i></span>
                 </div>
             </div>
         </section>

@@ -66,6 +66,147 @@
                 float: right;
                 margin:5px 0px;
             }
+            .kt_chat_modol{
+                bottom:0;
+                right:0;
+                padding: 0 !important;
+                height:auto;
+                position:fixed;
+                left:auto;
+                top:auto;
+                margin:0px;
+                box-shadow:0px 0px 60px -15px rgba(0, 0, 0, 0.2);
+                border-radius:0.42rem;
+                overflow-x:hidden;
+                overflow-y:auto;
+            }
+            .kt_chat_modol .modal-dialog{
+                margin:0 !important;
+            }
+            .scroll {
+                position: relative;
+            }
+            .scroll.scroll-pull{
+                padding-right:12px;
+                margin-right:-12px;
+            }
+            .align-items-start {
+                -webkit-box-align: start !important;
+                -ms-flex-align: start !important;
+                align-items: flex-start !important;
+            }
+            .flex-column {
+                -webkit-box-orient: vertical !important;
+                -webkit-box-direction: normal !important;
+                -ms-flex-direction: column !important;
+                flex-direction: column !important;
+            }
+            .d-flex {
+                display: -webkit-box !important;
+                display: -ms-flexbox !important;
+                display: flex !important;
+            }
+            .symbol {
+                display: inline-block;
+                -ms-flex-negative: 0;
+                flex-shrink: 0;
+                position: relative;
+                border-radius: 0.42rem;
+            }
+            .symbol.symbol-40 > img {
+                width: 100%;
+                max-width: 40px;
+                height: 40px;
+            }
+            .text-dark-75 {
+                color: #3F4254 !important;
+            }
+            .font-weight-bold {
+                font-weight: 500 !important;
+            }
+            .font-size-sm {
+                font-size: 0.925rem;
+            }
+            .font-size-lg {
+                font-size: 1.08rem;
+            }
+            .text-dark-50 {
+                color: #7E8299 !important;
+            }
+            .max-w-400px {
+                max-width: 400px !important;
+            }
+            .bg-light-success {
+                background-color: #C9F7F5 !important;
+            }
+            .font-weight-bold {
+                font-weight: 500 !important;
+            }
+            .p-5 {
+                padding: 1.25rem !important;
+            }
+            .card.card-custom > .card-footer {
+                background-color: transparent;
+            }
+            .card-footer:last-child {
+                border-radius: 0 0 calc(0.42rem - 1px) calc(0.42rem - 1px);
+            }
+            .align-items-center {
+                -webkit-box-align: center !important;
+                -ms-flex-align: center !important;
+                align-items: center !important;
+            }
+            .card-footer {
+                padding: 2rem 2.25rem;
+                background-color: #ffffff;
+                border-top: 1px solid #EBEDF3;
+            }
+            textarea.form-control {
+                height: auto;
+            }
+            .p-0 {
+                padding: 0 !important;
+            }
+            .border-0 {
+                border: 0 !important;
+            }
+            .form-control {
+                display: block;
+                width: 100%;
+                height: calc(1.5em + 1.3rem + 2px);
+                padding: 0.65rem 1rem;
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.5;
+                color: #3F4254;
+                background-color: #ffffff;
+                background-clip: padding-box;
+                border: 1px solid #E4E6EF;
+                border-radius: 0.42rem;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+                transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+                transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+                transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+            }
+            textarea {
+                overflow: auto;
+                resize: vertical;
+            }
+            input, button, select, optgroup, textarea {
+                margin: 0;
+                font-family: inherit;
+                font-size: inherit;
+                line-height: inherit;
+            }
+            .form-control:focus {
+                box-shadow: none !important;
+                color: #3F4254;
+                background-color: #ffffff;
+                border-color: #69b3ff;
+                outline: 0;
+            }
         </style>
     </head>
     <body>
@@ -262,7 +403,7 @@
             </div>
         </section>
 
-        <section id="chat_on_mobile" class="d-md-block d-lg-none fixed-bottom clearfix" onclick="chat_on_mobile()">
+        <section id="chat_on_mobile" class="d-md-block d-lg-none fixed-bottom clearfix" data-bs-toggle="modal" data-bs-target="#kt_chat_modol">
             <div class="container">
                 <div class="form-group">
                     <span class="title_txt">Live Chat</span>
@@ -273,6 +414,74 @@
             </div>
             <div class="clearfix" style="border-bottom:1px solid #6c757d;width:100%;"></div>
         </section>
+        <div class="modal fade kt_chat_modol" id="kt_chat_modol" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="scroll scroll-pull" data-height="375" data-mobile-height="300" style="overflow: auto; height: 300px;">
+                            <!--begin::Messages-->
+                            <div class="messages">
+
+                                <!--begin::Message In-->
+                                <div class="d-flex flex-column mb-5 align-items-start">
+                                    <div class="d-flex align-items-center">
+                                        <div class="symbol symbol-40 mr-3">
+                                            <img class="rounded-circle" alt="Pic" src="assets/media/users/300_12.jpg">
+                                        </div>
+                                        <div class="mx-2">
+                                            <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-h6" style="text-decoration:none;">Matt Pears</a>
+                                            <span class="text-muted font-size-sm">2 Hours</span>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 rounded p-5 bg-light-success text-dark-50 font-weight-bold font-size-lg text-left max-w-400px">
+                                        How likely are you to recommend our company
+                                        to your friends and family?
+                                    </div>
+                                </div>
+                                <!--end::Message In-->
+
+                                <!--begin::Message In-->
+                                <div class="d-flex flex-column mb-5 align-items-start">
+                                    <div class="d-flex align-items-center">
+                                        <div class="symbol symbol-40 mr-3">
+                                            <img class="rounded-circle" alt="Pic" src="assets/media/users/300_12.jpg">
+                                        </div>
+                                        <div class="mx-2">
+                                            <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-h6" style="text-decoration:none;">Matt Pears</a>
+                                            <span class="text-muted font-size-sm">2 Hours</span>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 rounded p-5 bg-light-success text-dark-50 font-weight-bold font-size-lg text-left max-w-400px">
+                                        How likely are you to recommend our company
+                                        to your friends and family?
+                                    </div>
+                                </div>
+                                <!--end::Message In-->
+
+                            </div>
+                            <!--end::Messages-->
+                        </div>
+                    </div>
+                    <div class="card-footer align-items-center">
+                        <!--begin::Compose-->
+                        <textarea class="form-control border-0 p-0" rows="5" placeholder="Type a message"></textarea>
+                        <div class="d-flex align-items-center justify-content-between mt-5">
+                            <div class="mr-3">
+
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-primary btn-md text-uppercase font-weight-bold chat-send py-2 px-6">Send</button>
+                            </div>
+                        </div>
+                        <!--begin::Compose-->
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.min.js" integrity="sha512-ewfXo9Gq53e1q1+WDTjaHAGZ8UvCWq0eXONhwDuIoaH8xz2r96uoAYaQCm1oQhnBfRXrvJztNXFsTloJfgbL5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.3.2/jquery-migrate.min.js" integrity="sha512-3fMsI1vtU2e/tVxZORSEeuMhXnT9By80xlmXlsOku7hNwZSHJjwcOBpmy+uu+fyWwGCLkMvdVbHkeoXdAzBv+w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -313,18 +522,6 @@
                     centerPadding: '60px'
                 });
             };
-            function chat_on_mobile() {
-                var t = $('#chat_on_mobile').height();
-                if (t === 36) {
-                    $('#chat_on_mobile').css("height", "50%");
-                    $('#title_icon').empty();
-                    $('#title_icon').append('<i class="fas fa-chevron-down"></i>');
-                } else {
-                    $('#chat_on_mobile').css("height", "36px");
-                    $('#title_icon').empty();
-                    $('#title_icon').append('<i class="fas fa-chevron-up"></i>');
-                }
-            }
         </script>
     </body>
 </html>

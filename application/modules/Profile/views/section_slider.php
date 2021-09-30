@@ -4,7 +4,7 @@
         <div class="swiper-wrapper">
 
             <div class="swiper-slide slide-center">
-                <img class="full-image" data-aos="zoom-out-up" data-aos-delay="800" src="http://localhost/mycapturer/assets/images/portfolio/highres/portfolio_1.jpg" alt="Hero Image">
+                <img class="full-image" data-aos="zoom-out-up" data-aos-delay="800" src="<?php echo base_url('assets/images/portfolio/highres/portfolio_1.jpg'); ?>" alt="Hero Image">
                 <div class="slide-content row">
                     <div class="col-12 d-flex inner">
                         <div class="center align-self-center text-center">

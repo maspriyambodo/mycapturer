@@ -48,24 +48,27 @@
                 backdrop-filter: blur(20px);
                 padding: 10px 0px;
             }
+            .slick_wrap{
+                margin:0px 5%;
+            }
         </style>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-custom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                            <img src="<?php echo base_url('assets/images/logo_festival.png'); ?>" alt="Festival Sertifikasiku"/>
-                        </a>
-                        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <img src="<?php echo base_url('assets/images/logo_festival.png'); ?>" alt="Festival Sertifikasiku"/>
+                </a>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                            </ul>
-                        </div>
-                
+                    </ul>
+                </div>
+
                 <div class="text-right">
-                            <button type="button" class="btn btn-custom ms-2">Masuk</button>
-                            <button type="button" class="btn btn-custom ms-2">Daftar</button>
-                        </div>
+                    <button type="button" class="btn btn-custom ms-2">Masuk</button>
+                    <button type="button" class="btn btn-custom ms-2">Daftar</button>
+                </div>
             </div>
         </nav>
         <section class="my-4">
@@ -74,7 +77,7 @@
                     <div class="col-md-8 d-xs-block col-xs-12 col-12 my-4">
                         <div id="bgndVideo" class="player">Video Title</div>
                     </div>
-                    <div class="col-md-4"><!-- d-sm-none d-xl-block -->
+                    <div class="col-md-4 d-none d-xl-block"><!-- d-sm-none d-xl-block -->
                         <div class="card" style="max-height:600px;height:100%;">
                             <div class="card-header">
                                 <div class="card-title">
@@ -173,11 +176,11 @@
                 <div class="row">
                     <div class="col-md-2">
                         <div class="form-group">
-                            <p class="text-white" style="margin:10% 0px;">Bekerja sama dengan:</p>
+                            <p class="text-white text-center" style="margin:10% 0px;">Bekerja sama dengan:</p>
                         </div>
                     </div>
                     <div class="col-md-10">
-                        <div class="your-class">
+                        <div class="your-class slick_wrap">
                             <div>
                                 <img src="http://kenwheeler.github.io/slick/img/fonz1.png" class="img-fluid" width="100"/>
                             </div>
@@ -249,16 +252,13 @@
                     coverImage: '<?php echo base_url('assets/images/ToT4.png'); ?>'
                 });
                 $('.your-class').slick({
-                    slidesToShow: 3,
                     slidesToScroll: 1,
                     dots: false,
-                    infinite: true,
+                    infinite: false,
                     cssEase: 'linear',
-                    autoplay: true,
-                    autoplaySpeed: 2000,
                     lazyLoad: 'ondemand',
-                    arrows: false,
-                    centerMode: true,
+                    arrows: true,
+                    centerMode: false,
                     centerPadding: '60px'
                 });
             };

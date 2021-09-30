@@ -52,6 +52,7 @@
                 margin:0px 5%;
             }
             #chat_on_mobile{
+                height:36px;
                 background: #FFFFFF;
                 box-shadow: 0px -6px 12px rgba(0, 0, 0, 0.1);
                 border-radius: 10px 10px 0px 0px;
@@ -101,10 +102,10 @@
         <section id="main_webinar" class="my-4 clearfix">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-8 d-xs-block col-xs-12 col-12 my-4">
+                    <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12 my-4">
                         <div id="bgndVideo" class="player">Video Title</div>
                     </div>
-                    <div class="col-md-4 d-none d-xl-block"><!-- d-sm-none d-xl-block -->
+                    <div class="col-md-4 d-md-none d-xl-block"><!-- d-sm-none d-xl-block -->
                         <div class="card" style="max-height:600px;height:100%;">
                             <div class="card-header">
                                 <div class="card-title">
@@ -187,7 +188,7 @@
         <section id="webinar_title" class="my-4 clearfix">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
                         <div class="form-group">
                             <h4 class="text-white">Judul Webinar</h4>
                         </div>
@@ -274,7 +275,7 @@
             </div>
         </section>
 
-        <section id="chat_on_mobile" class="d-block d-sm-none fixed-bottom clearfix">
+        <section id="chat_on_mobile" class="d-md-block d-lg-none fixed-bottom clearfix">
             <div class="container">
                 <div class="form-group">
                     <span class="title_txt">Live Chat</span>

@@ -105,7 +105,7 @@
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12 my-4">
                         <div id="bgndVideo" class="player">Video Title</div>
                     </div>
-                    <div class="col-md-4 d-md-none d-xl-block"><!-- d-sm-none d-xl-block -->
+                    <div class="col-lg-4 d-none d-xl-block"><!-- d-sm-none d-xl-block -->
                         <div class="card" style="max-height:600px;height:100%;">
                             <div class="card-header">
                                 <div class="card-title">

@@ -475,6 +475,7 @@
                             </div>
                             <div>
                                 <button type="button" class="btn btn-primary btn-md text-uppercase font-weight-bold chat-send py-2 px-6">Send</button>
+                                <button type="button" class="btn btn-secondary btn-md text-uppercase font-weight-bold chat-send py-2 px-6" data-bs-dismiss="modal" aria-label="Close">Tutup</button>
                             </div>
                         </div>
                         <!--begin::Compose-->

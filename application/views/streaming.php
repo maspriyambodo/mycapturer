@@ -52,32 +52,19 @@
                 margin:0px 5%;
             }
             #chat_on_mobile{
+                cursor: pointer;
                 height:36px;
                 background: #FFFFFF;
                 box-shadow: 0px -6px 12px rgba(0, 0, 0, 0.1);
                 border-radius: 10px 10px 0px 0px;
             }
             .title_txt{
-                position: absolute;
-                left: 4.72%;
-                right: 62.22%;
-                top: 0;
-                bottom: 0;
-
-                font-family: GalanoGrotesque-SemiBold;
-                font-size: 14px;
-                line-height: 16px;
-                display: flex;
-                align-items: center;
-
-                color: #7A7A7A;
+                float: left;
+                margin:5px 0px;
             }
             .title_icon{
                 float: right;
-                left: 21.01%;
-                right: 21%;
-                top: 30%;
-                bottom: 36%;
+                margin:5px 0px;
             }
         </style>
     </head>
@@ -250,7 +237,7 @@
                 </div>
             </div>
         </section>
-        <section class="d-block clearfix my-4">
+        <section id="empt_space" class="d-block clearfix my-4">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-4 bg-info">
@@ -275,15 +262,16 @@
             </div>
         </section>
 
-        <section id="chat_on_mobile" class="d-md-block d-lg-none fixed-bottom clearfix">
+        <section id="chat_on_mobile" class="d-md-block d-lg-none fixed-bottom clearfix" onclick="chat_on_mobile()">
             <div class="container">
                 <div class="form-group">
                     <span class="title_txt">Live Chat</span>
                 </div>
                 <div class="form-group">
-                    <span class="title_icon"><i class="fas fa-chevron-up"></i></span>
+                    <span id="title_icon" class="title_icon"><i class="fas fa-chevron-up"></i></span>
                 </div>
             </div>
+            <div class="clearfix" style="border-bottom:1px solid #6c757d;width:100%;"></div>
         </section>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.min.js" integrity="sha512-ewfXo9Gq53e1q1+WDTjaHAGZ8UvCWq0eXONhwDuIoaH8xz2r96uoAYaQCm1oQhnBfRXrvJztNXFsTloJfgbL5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -325,6 +313,18 @@
                     centerPadding: '60px'
                 });
             };
+            function chat_on_mobile() {
+                var t = $('#chat_on_mobile').height();
+                if (t === 36) {
+                    $('#chat_on_mobile').css("height", "50%");
+                    $('#title_icon').empty();
+                    $('#title_icon').append('<i class="fas fa-chevron-down"></i>');
+                } else {
+                    $('#chat_on_mobile').css("height", "36px");
+                    $('#title_icon').empty();
+                    $('#title_icon').append('<i class="fas fa-chevron-up"></i>');
+                }
+            }
         </script>
     </body>
 </html>

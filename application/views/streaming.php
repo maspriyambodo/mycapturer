@@ -29,14 +29,14 @@
                 </div>
             </div>
         </nav>
-        <section id="main_webinar" class="my-4 clearfix">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12 my-4">
-                        <div id="bgndVideo" class="player">Video Title</div>
+        <section id="main_webinar" class="clearfix main_webinar">
+            <div class="container">
+                <div class="row pt-4">
+                    <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
+                        <div id="bgndVideo" class="player"></div>
                     </div>
                     <div class="col-lg-4 d-none d-xl-block"><!-- d-sm-none d-xl-block -->
-                        <div class="card" style="max-height:600px;height:100%;">
+                        <div class="card" style="max-height:600px;height:100%;max-height:456px;">
                             <div class="card-header">
                                 <div class="card-title">
                                     <div class="form-group">
@@ -113,11 +113,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <section id="webinar_title" class="my-4 clearfix">
-            <div class="container-fluid">
-                <div class="row">
+                <div class="row py-4">
                     <div class="col-lg-8 d-xs-block col-xs-12 col-12 col-md-12">
                         <div class="form-group">
                             <h4 class="text-white">Judul Webinar</h4>
@@ -128,60 +124,57 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <section id="carousel" class="my-4 bg-carousel clearfix">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <p class="text-white text-center" style="margin:10% 0px;">Bekerja sama dengan:</p>
-                        </div>
-                    </div>
-                    <div class="col-md-10">
-                        <div class="sertif-carousel slick_wrap">
-                            <div>
-                                <img src="http://kenwheeler.github.io/slick/img/fonz1.png" class="img-fluid" width="100"/>
-                            </div>
-                            <div>
-                                <img src="http://kenwheeler.github.io/slick/img/fonz2.png" class="img-fluid" width="100"/>
-                            </div>
-                            <div>
-                                <img src="http://kenwheeler.github.io/slick/img/fonz3.png" class="img-fluid" width="100"/>
-                            </div>
-                            <div>
-                                <img src="http://kenwheeler.github.io/slick/img/fonz1.png" class="img-fluid" width="100"/>
-                            </div>
-                            <div>
-                                <img src="http://kenwheeler.github.io/slick/img/fonz2.png" class="img-fluid" width="100"/>
-                            </div>
-                            <div>
-                                <img src="http://kenwheeler.github.io/slick/img/fonz3.png" class="img-fluid" width="100"/>
-                            </div>
-                            <div>
-                                <img src="http://kenwheeler.github.io/slick/img/fonz1.png" class="img-fluid" width="100"/>
-                            </div>
-                            <div>
-                                <img src="http://kenwheeler.github.io/slick/img/fonz2.png" class="img-fluid" width="100"/>
-                            </div>
-                            <div>
-                                <img src="http://kenwheeler.github.io/slick/img/fonz3.png" class="img-fluid" width="100"/>
-                            </div>
-                            <div>
-                                <img src="http://kenwheeler.github.io/slick/img/fonz1.png" class="img-fluid" width="100"/>
-                            </div>
-                            <div>
-                                <img src="http://kenwheeler.github.io/slick/img/fonz2.png" class="img-fluid" width="100"/>
-                            </div>
-                            <div>
-                                <img src="http://kenwheeler.github.io/slick/img/fonz3.png" class="img-fluid" width="100"/>
-                            </div>
-                        </div>  
+            <div class="row bg-carousel">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <p class="text-white text-center" style="margin:10% 0px;">Bekerja sama dengan:</p>
                     </div>
                 </div>
+                <div class="col-md-10">
+                    <div class="sertif-carousel slick_wrap">
+                        <div>
+                            <img src="http://kenwheeler.github.io/slick/img/fonz1.png" class="img-fluid" width="100"/>
+                        </div>
+                        <div>
+                            <img src="http://kenwheeler.github.io/slick/img/fonz2.png" class="img-fluid" width="100"/>
+                        </div>
+                        <div>
+                            <img src="http://kenwheeler.github.io/slick/img/fonz3.png" class="img-fluid" width="100"/>
+                        </div>
+                        <div>
+                            <img src="http://kenwheeler.github.io/slick/img/fonz1.png" class="img-fluid" width="100"/>
+                        </div>
+                        <div>
+                            <img src="http://kenwheeler.github.io/slick/img/fonz2.png" class="img-fluid" width="100"/>
+                        </div>
+                        <div>
+                            <img src="http://kenwheeler.github.io/slick/img/fonz3.png" class="img-fluid" width="100"/>
+                        </div>
+                        <div>
+                            <img src="http://kenwheeler.github.io/slick/img/fonz1.png" class="img-fluid" width="100"/>
+                        </div>
+                        <div>
+                            <img src="http://kenwheeler.github.io/slick/img/fonz2.png" class="img-fluid" width="100"/>
+                        </div>
+                        <div>
+                            <img src="http://kenwheeler.github.io/slick/img/fonz3.png" class="img-fluid" width="100"/>
+                        </div>
+                        <div>
+                            <img src="http://kenwheeler.github.io/slick/img/fonz1.png" class="img-fluid" width="100"/>
+                        </div>
+                        <div>
+                            <img src="http://kenwheeler.github.io/slick/img/fonz2.png" class="img-fluid" width="100"/>
+                        </div>
+                        <div>
+                            <img src="http://kenwheeler.github.io/slick/img/fonz3.png" class="img-fluid" width="100"/>
+                        </div>
+                    </div>  
+                </div>
             </div>
+            <div style="padding:40px 0px;"></div>
         </section>
-        <section id="empt_space" class="d-block clearfix my-4">
-            <div class="container-fluid">
+        <section class="second_webinar">
+            <div class="container">
                 <div class="row">
                     <div class="col-md-4 bg-info">
                         <div style="width:100%;height:300px;">
@@ -297,7 +290,7 @@
                     event.stopPropagation();
                 });
                 $("#bgndVideo").YTPlayer({
-                    videoURL: 'uSIK2m54CNw',
+                    videoURL: '1xM7RbD1SVw',
                     containment: 'self',
                     autoPlay: false,
                     mute: false,

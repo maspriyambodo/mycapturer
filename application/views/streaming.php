@@ -9,205 +9,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <style>
-            body{
-                background: linear-gradient(94.05deg, #23509C 0%, #2355BB 43.07%, #4A88FF 92.92%);
-            }
-            .bg-custom{
-                background-color: #506F9A;
-                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-            }
-            .btn-custom{
-                background-color: #F3F3F3;
-                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
-                border-radius: 8px;
-            }
-            .mb_YTPlayer iframe {
-                pointer-events: none;
-            }
-            .chat_footer{
-                padding:0 !important;
-                margin-bottom: 0 !important;
-            }
-            .pict_user_chat{
-                width:28px;
-                height:28px;
-                margin-right:5px;
-                float: left;
-            }
-            .username_chat{
-                font-size: 11px;
-            }
-            .slick-slide{
-                width:auto !important;
-                margin:0px 10px;
-            }
-            .bg-carousel{
-                background: linear-gradient(90.27deg, #2D6FA0 -16.75%, rgba(69, 156, 207, 0.72) 100.23%);
-                opacity: 0.8;
-                backdrop-filter: blur(20px);
-                padding: 10px 0px;
-            }
-            .slick_wrap{
-                margin:0px 5%;
-            }
-            #chat_on_mobile{
-                cursor: pointer;
-                height:36px;
-                background: #FFFFFF;
-                box-shadow: 0px -6px 12px rgba(0, 0, 0, 0.1);
-                border-radius: 10px 10px 0px 0px;
-            }
-            .title_txt{
-                float: left;
-                margin:5px 0px;
-            }
-            .title_icon{
-                float: right;
-                margin:5px 0px;
-            }
-            .kt_chat_modol{
-                bottom:0;
-                right:0;
-                padding: 0 !important;
-                height:auto;
-                position:fixed;
-                left:auto;
-                top:auto;
-                margin:0px;
-                box-shadow:0px 0px 60px -15px rgba(0, 0, 0, 0.2);
-                border-radius:0.42rem;
-                overflow-x:hidden;
-                overflow-y:auto;
-            }
-            .kt_chat_modol .modal-dialog{
-                margin:0 !important;
-            }
-            .scroll {
-                position: relative;
-            }
-            .scroll.scroll-pull{
-                padding-right:12px;
-                margin-right:-12px;
-            }
-            .align-items-start {
-                -webkit-box-align: start !important;
-                -ms-flex-align: start !important;
-                align-items: flex-start !important;
-            }
-            .flex-column {
-                -webkit-box-orient: vertical !important;
-                -webkit-box-direction: normal !important;
-                -ms-flex-direction: column !important;
-                flex-direction: column !important;
-            }
-            .d-flex {
-                display: -webkit-box !important;
-                display: -ms-flexbox !important;
-                display: flex !important;
-            }
-            .symbol {
-                display: inline-block;
-                -ms-flex-negative: 0;
-                flex-shrink: 0;
-                position: relative;
-                border-radius: 0.42rem;
-            }
-            .symbol.symbol-40 > img {
-                width: 100%;
-                max-width: 40px;
-                height: 40px;
-            }
-            .text-dark-75 {
-                color: #3F4254 !important;
-            }
-            .font-weight-bold {
-                font-weight: 500 !important;
-            }
-            .font-size-sm {
-                font-size: 0.925rem;
-            }
-            .font-size-lg {
-                font-size: 1.08rem;
-            }
-            .text-dark-50 {
-                color: #7E8299 !important;
-            }
-            .max-w-400px {
-                max-width: 400px !important;
-            }
-            .bg-light-success {
-                background-color: #C9F7F5 !important;
-            }
-            .font-weight-bold {
-                font-weight: 500 !important;
-            }
-            .p-5 {
-                padding: 1.25rem !important;
-            }
-            .card.card-custom > .card-footer {
-                background-color: transparent;
-            }
-            .card-footer:last-child {
-                border-radius: 0 0 calc(0.42rem - 1px) calc(0.42rem - 1px);
-            }
-            .align-items-center {
-                -webkit-box-align: center !important;
-                -ms-flex-align: center !important;
-                align-items: center !important;
-            }
-            .card-footer {
-                padding: 2rem 2.25rem;
-                background-color: #ffffff;
-                border-top: 1px solid #EBEDF3;
-            }
-            textarea.form-control {
-                height: auto;
-            }
-            .p-0 {
-                padding: 0 !important;
-            }
-            .border-0 {
-                border: 0 !important;
-            }
-            .form-control {
-                display: block;
-                width: 100%;
-                height: calc(1.5em + 1.3rem + 2px);
-                padding: 0.65rem 1rem;
-                font-size: 1rem;
-                font-weight: 400;
-                line-height: 1.5;
-                color: #3F4254;
-                background-color: #ffffff;
-                background-clip: padding-box;
-                border: 1px solid #E4E6EF;
-                border-radius: 0.42rem;
-                -webkit-box-shadow: none;
-                box-shadow: none;
-                -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-                transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-                transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-                transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-            }
-            textarea {
-                overflow: auto;
-                resize: vertical;
-            }
-            input, button, select, optgroup, textarea {
-                margin: 0;
-                font-family: inherit;
-                font-size: inherit;
-                line-height: inherit;
-            }
-            .form-control:focus {
-                box-shadow: none !important;
-                color: #3F4254;
-                background-color: #ffffff;
-                border-color: #69b3ff;
-                outline: 0;
-            }
-        </style>
+        <link rel="stylesheet" href="<?php echo base_url('assets/streaming.css'); ?>"/>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-custom">
@@ -336,7 +138,7 @@
                         </div>
                     </div>
                     <div class="col-md-10">
-                        <div class="your-class slick_wrap">
+                        <div class="sertif-carousel slick_wrap">
                             <div>
                                 <img src="http://kenwheeler.github.io/slick/img/fonz1.png" class="img-fluid" width="100"/>
                             </div>
@@ -384,7 +186,7 @@
                     <div class="col-md-4 bg-info">
                         <div style="width:100%;height:300px;">
                             <div class="text-center">
-                                <h4 style="padding:30% 0px;">300 x 600 px</h4>
+                                <h4>300 x 600 px</h4>
                             </div>
                         </div>
                     </div>
@@ -392,7 +194,7 @@
                     <div class="col-md-2 bg-success">
                         <div style="width:100%;height:300px;">
                             <div class="text-center">
-                                <h4 style="padding:35% 0px;">300 x 250 px</h4>
+                                <h4>300 x 250 px</h4>
                             </div>
                         </div>
                     </div>
@@ -512,7 +314,7 @@
                     useNoCookie: true,
                     coverImage: '<?php echo base_url('assets/images/ToT4.png'); ?>'
                 });
-                $('.your-class').slick({
+                $('.sertif-carousel').slick({
                     slidesToScroll: 1,
                     dots: false,
                     infinite: false,

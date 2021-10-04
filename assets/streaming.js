@@ -26,18 +26,18 @@ window.onload = function () {
                 );
         $('#msg_dir2').append(
                 '<div class="d-flex flex-column mb-5 align-items-start">'
-                    + '<div class="d-flex align-items-center">'
-                        + '<div class="symbol symbol-40 mr-3">'
-                            +'<img class="rounded-circle" alt="Pic" src="assets/media/users/300_12.jpg">'
-                        +'</div>'
-                        +'<div class="mx-2">'
-                            +'<a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-h6" style="text-decoration:none;">Matt Pears</a>'
-                            +'<span class="text-muted font-size-sm"></span>'
-                        +'</div>'
-                    + '</div>'
-                    +'<div class="mt-2 rounded p-5 bg-light-success text-dark-50 font-weight-bold font-size-lg text-left max-w-400px">'
-                        + data.msgtxt
-                    +'</div>'
+                + '<div class="d-flex align-items-center">'
+                + '<div class="symbol symbol-40 mr-3">'
+                + '<img class="rounded-circle" alt="Pic" src="assets/media/users/300_12.jpg">'
+                + '</div>'
+                + '<div class="mx-2">'
+                + '<a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-h6" style="text-decoration:none;">Matt Pears</a>'
+                + '<span class="text-muted font-size-sm"></span>'
+                + '</div>'
+                + '</div>'
+                + '<div class="mt-2 rounded p-5 bg-light-success text-dark-50 font-weight-bold font-size-lg text-left max-w-400px">'
+                + data.msgtxt
+                + '</div>'
                 + '</div>'
                 );
         $('#msg_dir').animate({
@@ -137,7 +137,7 @@ function Send_chat(id) {
                         socket.emit('new_message', {
                             msgtxt: data.msg
                         });
-                        $('input[name="msgtxt"]').val('');
+                        $('textarea[name="msgtxt2"]').val('');
                     } else if (data.success === false) {
                         $("#name").val(data.name);
                         $("#email").val(data.email);

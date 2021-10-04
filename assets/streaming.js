@@ -20,7 +20,7 @@ window.onload = function () {
         $('#msg_dir').append(
                 '<div class="form-group mb-3">'
                 + '<div style="float:left;"><img class="img-fluid pict_user_chat rounded-circle" src="assets/images/unnamed.jpg" alt="username"/></div>'
-                + '<div style="padding:0px 35px;"><b class="username_chat">Mamat <i class="fas fa-check-circle text-info"></b></i>'
+                + '<div style="padding:0px 5px 0px 35px;"><b class="username_chat">Mamat <i class="fas fa-check-circle text-info"></b></i>'
                 + '<span class="ms-2 text-muted">' + data.msgtxt + '</span></div>'
                 + '</div>'
                 );

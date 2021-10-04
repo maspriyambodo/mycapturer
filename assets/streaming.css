@@ -90,9 +90,12 @@
     border-radius:0.42rem;
     overflow-x:hidden;
     overflow-y:auto;
+    width:100%;
+    max-width:100%;
 }
 .kt_chat_modol .modal-dialog{
     margin:0 !important;
+    max-width:100%;
 }
 .scroll {
     position: relative;

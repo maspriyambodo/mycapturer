@@ -114,7 +114,7 @@ function Send_chat(id) {
                         $("#notif").html(data.notif);
                     }
                 }, error: function (xhr, status, error) {
-                    alert(error);
+                    toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
                 }
             });
         }
@@ -147,7 +147,7 @@ function Send_chat(id) {
                         $("#notif").html(data.notif);
                     }
                 }, error: function (xhr, status, error) {
-                    alert(error);
+                    toastr.error('error ' + jqXHR.status + ' ' + jqXHR.statusText);
                 }
             });
         }

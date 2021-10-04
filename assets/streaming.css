@@ -7,7 +7,7 @@
     overflow: auto;
 }
 .container{
-    max-width: 1252px !important;
+    max-width: 95% !important;
 }
 .main_webinar{
     background-image:url("./images/background_section_teaser-1.png");

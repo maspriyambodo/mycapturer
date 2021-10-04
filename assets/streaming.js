@@ -18,10 +18,19 @@ window.onload = function () {
     var socket = io.connect('https://live-chat.mycapturer.com');
     socket.on('new_message', function (data) {
         $('#msg_dir').append(
-                '<div class="form-group mb-3">'
-                + '<div style="float:left;"><img class="img-fluid pict_user_chat rounded-circle" src="assets/images/unnamed.jpg" alt="username"/></div>'
-                + '<div style="padding:0px 5px 0px 35px;"><b class="username_chat">Mamat <i class="fas fa-check-circle text-info"></b></i>'
-                + '<span class="ms-2 text-muted">' + data.msgtxt + '</span></div>'
+                '<div class="d-flex flex-column mb-5 align-items-start">'
+                + '<div class="d-flex align-items-center">'
+                + '<div class="symbol symbol-40 mr-3">'
+                + '<img class="rounded-circle" alt="username" src="assets/media/users/300_12.jpg">'
+                + '</div>'
+                + '<div class="mx-2">'
+                + '<a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-h6" style="text-decoration:none;">Matt Pears </a>'
+                + '<span class="text-muted font-size-sm"><i class="fas fa-check-circle text-info"></i></span>'
+                + '</div>'
+                + '</div>'
+                + '<div class="mt-2 p-5 bg-light-success text-dark-50 font-weight-bold font-size-lg text-left wrap-chat">'
+                + data.msgtxt
+                + '</div>'
                 + '</div>'
                 );
         $('#msg_dir2').append(

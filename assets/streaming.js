@@ -24,8 +24,27 @@ window.onload = function () {
                 + '<span class="ms-2 text-muted">' + data.msgtxt + '</span></div>'
                 + '</div>'
                 );
+        $('#msg_dir2').append(
+                '<div class="d-flex flex-column mb-5 align-items-start">'
+                    + '<div class="d-flex align-items-center">'
+                        + '<div class="symbol symbol-40 mr-3">'
+                            +'<img class="rounded-circle" alt="Pic" src="assets/media/users/300_12.jpg">'
+                        +'</div>'
+                        +'<div class="mx-2">'
+                            +'<a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-h6" style="text-decoration:none;">Matt Pears</a>'
+                            +'<span class="text-muted font-size-sm"></span>'
+                        +'</div>'
+                    + '</div>'
+                    +'<div class="mt-2 rounded p-5 bg-light-success text-dark-50 font-weight-bold font-size-lg text-left max-w-400px">'
+                        + data.msgtxt
+                    +'</div>'
+                + '</div>'
+                );
         $('#msg_dir').animate({
             scrollTop: $('#msg_dir').get(0).scrollHeight
+        });
+        $('#msg_dir2').animate({
+            scrollTop: $('#msg_dir2').get(0).scrollHeight
         });
     });
     document.getElementById("bgndVideo").addEventListener("contextmenu", function (event) {
@@ -60,39 +79,78 @@ window.onload = function () {
         centerPadding: '60px'
     });
 };
-function Send_chat() {
-    var msgtxt = $('input[name="msgtxt"]').val();
-    if (msgtxt.length <= 15) {
-        toastr.warning('Message is too short! 15 characters minimum');
-    } else if (msgtxt.length >= 200) {
-        toastr.warning('Message is too long! 200 characters maximum');
-    } else {
-        var dataString = {
-            message: msgtxt
-        };
-        $.ajax({
-            type: "POST",
-            url: "Streaming/Chat_send/",
-            data: dataString,
-            dataType: "json",
-            cache: false,
-            success: function (data) {
-                if (data.success === true) {
-                    var socket = io.connect('https://live-chat.mycapturer.com');
-                    socket.emit('new_message', {
-                        msgtxt: data.msg
-                    });
-                    $('input[name="msgtxt"]').val('');
-                } else if (data.success === false) {
-                    $("#name").val(data.name);
-                    $("#email").val(data.email);
-                    $("#subject").val(data.subject);
-                    $("#message").val(data.message);
-                    $("#notif").html(data.notif);
+function Send_chat(id) {
+    if (id === 1) {
+        var msgtxt = $('input[name="msgtxt"]').val();
+        if (msgtxt.length <= 15) {
+            toastr.warning('Message is too short! 15 characters minimum');
+        } else if (msgtxt.length >= 200) {
+            toastr.warning('Message is too long! 200 characters maximum');
+        } else {
+            var dataString = {
+                message: msgtxt
+            };
+            $.ajax({
+                type: "POST",
+                url: "Streaming/Chat_send/",
+                data: dataString,
+                dataType: "json",
+                cache: false,
+                success: function (data) {
+                    if (data.success === true) {
+                        var socket = io.connect('https://live-chat.mycapturer.com');
+                        socket.emit('new_message', {
+                            msgtxt: data.msg
+                        });
+                        $('input[name="msgtxt"]').val('');
+                    } else if (data.success === false) {
+                        $("#name").val(data.name);
+                        $("#email").val(data.email);
+                        $("#subject").val(data.subject);
+                        $("#message").val(data.message);
+                        $("#notif").html(data.notif);
+                    }
+                }, error: function (xhr, status, error) {
+                    alert(error);
                 }
-            }, error: function (xhr, status, error) {
-                alert(error);
-            }
-        });
+            });
+        }
+    } else if (id === 2) {
+        var msgtxt = $('textarea[name="msgtxt2"]').val();
+        if (msgtxt.length <= 15) {
+            toastr.warning('Message is too short! 15 characters minimum');
+        } else if (msgtxt.length >= 200) {
+            toastr.warning('Message is too long! 200 characters maximum');
+        } else {
+            var dataString = {
+                message: msgtxt
+            };
+            $.ajax({
+                type: "POST",
+                url: "Streaming/Chat_send/",
+                data: dataString,
+                dataType: "json",
+                cache: false,
+                success: function (data) {
+                    if (data.success === true) {
+                        var socket = io.connect('https://live-chat.mycapturer.com');
+                        socket.emit('new_message', {
+                            msgtxt: data.msg
+                        });
+                        $('input[name="msgtxt"]').val('');
+                    } else if (data.success === false) {
+                        $("#name").val(data.name);
+                        $("#email").val(data.email);
+                        $("#subject").val(data.subject);
+                        $("#message").val(data.message);
+                        $("#notif").html(data.notif);
+                    }
+                }, error: function (xhr, status, error) {
+                    alert(error);
+                }
+            });
+        }
     }
+
+
 }

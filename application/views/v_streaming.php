@@ -49,7 +49,7 @@
                             <div id="msg_dir" class="card-body"></div>
                             <div class="card-footer input-group mb-3 chat_footer">
                                 <input type="text" class="form-control" name="msgtxt" autocomplete="off" minlength="15" maxlength="200">
-                                <span class="input-group-text" onclick="Send_chat()"><i class="fas fa-paper-plane"></i></span>
+                                <span class="input-group-text" onclick="Send_chat(1)"><i class="fas fa-paper-plane"></i></span>
                             </div>
                         </div>
                     </div>
@@ -153,64 +153,24 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel"><i class="fas fa-comments"></i><b> Live Chat</b></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="scroll scroll-pull" data-height="375" data-mobile-height="300" style="overflow: auto; height: 300px;">
                             <!--begin::Messages-->
-                            <div id="msg_dir" class="messages">
-
-                                <!--begin::Message In-->
-                                <div class="d-flex flex-column mb-5 align-items-start">
-                                    <div class="d-flex align-items-center">
-                                        <div class="symbol symbol-40 mr-3">
-                                            <img class="rounded-circle" alt="Pic" src="assets/media/users/300_12.jpg">
-                                        </div>
-                                        <div class="mx-2">
-                                            <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-h6" style="text-decoration:none;">Matt Pears</a>
-                                            <span class="text-muted font-size-sm">2 Hours</span>
-                                        </div>
-                                    </div>
-                                    <div class="mt-2 rounded p-5 bg-light-success text-dark-50 font-weight-bold font-size-lg text-left max-w-400px">
-                                        How likely are you to recommend our company
-                                        to your friends and family?
-                                    </div>
-                                </div>
-                                <!--end::Message In-->
-
-                                <!--begin::Message In-->
-                                <div class="d-flex flex-column mb-5 align-items-start">
-                                    <div class="d-flex align-items-center">
-                                        <div class="symbol symbol-40 mr-3">
-                                            <img class="rounded-circle" alt="Pic" src="assets/media/users/300_12.jpg">
-                                        </div>
-                                        <div class="mx-2">
-                                            <a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-h6" style="text-decoration:none;">Matt Pears</a>
-                                            <span class="text-muted font-size-sm">2 Hours</span>
-                                        </div>
-                                    </div>
-                                    <div class="mt-2 rounded p-5 bg-light-success text-dark-50 font-weight-bold font-size-lg text-left max-w-400px">
-                                        How likely are you to recommend our company
-                                        to your friends and family?
-                                    </div>
-                                </div>
-                                <!--end::Message In-->
-
-                            </div>
+                            <div id="msg_dir2" class="messages"></div>
                             <!--end::Messages-->
                         </div>
                     </div>
                     <div class="card-footer align-items-center">
                         <!--begin::Compose-->
-                        <textarea class="form-control border-0 p-0" rows="5" placeholder="Type a message"></textarea>
-                        <div class="d-flex align-items-center justify-content-between mt-5">
-                            <div class="mr-3">
-
-                            </div>
+                        <textarea name="msgtxt2" class="form-control border-0 p-0" rows="4" placeholder="Type a message" minlength="15" maxlength="200"></textarea>
+                        <div class="d-flex align-items-center justify-content-between mt-2">
+                            <div class="mr-3"></div>
                             <div>
-                                <button type="button" class="btn btn-primary btn-md text-uppercase font-weight-bold chat-send py-2 px-6" onclick="Send_chat()">Send</button>
-                                <button type="button" class="btn btn-secondary btn-md text-uppercase font-weight-bold chat-send py-2 px-6" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                                <button type="button" class="btn btn-primary text-uppercase font-weight-bold chat-send py-2 px-6" onclick="Send_chat(2)">Send</button>
+                                <button type="button" class="btn btn-secondary text-uppercase font-weight-bold chat-send py-2 px-6" data-bs-dismiss="modal" aria-label="Close">Close</button>
                             </div>
                         </div>
                         <!--begin::Compose-->

@@ -37,7 +37,7 @@
                         <div id="bgndVideo" class="player"></div>
                     </div>
                     <div class="col-lg-4 d-none d-xl-block"><!-- d-sm-none d-xl-block -->
-                        <div class="card" style="max-height:600px;height:100%;max-height:456px;">
+                        <div class="card live-chat-lg">
                             <div class="card-header">
                                 <div class="card-title">
                                     <div class="form-group">
@@ -138,7 +138,7 @@
                 </div>
             </div>
         </section>
-        <section id="chat_on_mobile" class="d-md-block d-lg-none fixed-bottom clearfix" data-bs-toggle="modal" data-bs-target="#kt_chat_modol">
+        <section id="chat_on_mobile" class="d-md-block d-lg-none fixed-bottom clearfix" data-bs-toggle="modal" data-bs-target="#kt_chat_modol" onclick="Open_chat()">
             <div class="container">
                 <div class="form-group">
                     <span class="title_txt">Live Chat</span>
@@ -157,7 +157,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="scroll scroll-pull" data-height="375" data-mobile-height="300" style="overflow: auto; height: 300px;">
+                        <div id="scroll-pull" class="scroll scroll-pull" data-height="375" data-mobile-height="300">
                             <!--begin::Messages-->
                             <div id="msg_dir2" class="messages"></div>
                             <!--end::Messages-->

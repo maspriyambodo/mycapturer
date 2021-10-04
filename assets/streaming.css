@@ -1,3 +1,8 @@
+.live-chat-lg{
+    max-height:600px;
+    height:100%;
+    max-height:456px;
+}
 #msg_dir{
     overflow: auto;
 }
@@ -93,6 +98,8 @@
     position: relative;
 }
 .scroll.scroll-pull{
+    overflow: auto;
+    height: 300px;
     padding-right:12px;
     margin-right:-12px;
 }

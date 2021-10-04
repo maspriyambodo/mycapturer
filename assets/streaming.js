@@ -43,8 +43,8 @@ window.onload = function () {
         $('#msg_dir').animate({
             scrollTop: $('#msg_dir').get(0).scrollHeight
         });
-        $('#msg_dir2').animate({
-            scrollTop: $('#msg_dir2').get(0).scrollHeight
+        $('#scroll-pull').animate({
+            scrollTop: $('#scroll-pull').get(0).scrollHeight
         });
     });
     document.getElementById("bgndVideo").addEventListener("contextmenu", function (event) {
@@ -79,6 +79,11 @@ window.onload = function () {
         centerPadding: '60px'
     });
 };
+function Open_chat() {
+    $('#scroll-pull').animate({
+        scrollTop: $('#scroll-pull').get(0).scrollHeight
+    });
+}
 function Send_chat(id) {
     if (id === 1) {
         var msgtxt = $('input[name="msgtxt"]').val();

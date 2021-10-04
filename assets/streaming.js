@@ -24,6 +24,9 @@ window.onload = function () {
                 + '<span class="ms-2 text-muted">' + data.msgtxt + '</span></div>'
                 + '</div>'
                 );
+        $('#msg_dir').animate({
+            scrollTop: $('#msg_dir').get(0).scrollHeight
+        });
     });
     document.getElementById("bgndVideo").addEventListener("contextmenu", function (event) {
         event.preventDefault();

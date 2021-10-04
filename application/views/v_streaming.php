@@ -46,9 +46,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="msg_dir" class="card-body" style="overflow: auto;">
-
-                            </div>
+                            <div id="msg_dir" class="card-body"></div>
                             <div class="card-footer input-group mb-3 chat_footer">
                                 <input type="text" class="form-control" name="msgtxt" autocomplete="off" minlength="15" maxlength="200">
                                 <span class="input-group-text" onclick="Send_chat()"><i class="fas fa-paper-plane"></i></span>

@@ -1,3 +1,6 @@
+#msg_dir{
+    overflow: auto;
+}
 .container{
     max-width: 1252px !important;
 }

@@ -87,10 +87,8 @@ function Open_chat() {
 function Send_chat(id) {
     if (id === 1) {
         var msgtxt = $('input[name="msgtxt"]').val();
-        if (msgtxt.length <= 15) {
+        if (msgtxt.length <= 1) {
             toastr.warning('Message is too short! 15 characters minimum');
-        } else if (msgtxt.length >= 200) {
-            toastr.warning('Message is too long! 200 characters maximum');
         } else {
             var dataString = {
                 message: msgtxt
@@ -122,10 +120,8 @@ function Send_chat(id) {
         }
     } else if (id === 2) {
         var msgtxt = $('textarea[name="msgtxt2"]').val();
-        if (msgtxt.length <= 15) {
+        if (msgtxt.length <= 1) {
             toastr.warning('Message is too short! 15 characters minimum');
-        } else if (msgtxt.length >= 200) {
-            toastr.warning('Message is too long! 200 characters maximum');
         } else {
             var dataString = {
                 message: msgtxt

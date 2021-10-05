@@ -1,6 +1,7 @@
 .wrap-chat{
-    width:100%;
+    width:90%;
     border-radius:10px;
+    margin-left:45px;
 }
 .live-chat-lg{
     max-height:600px;

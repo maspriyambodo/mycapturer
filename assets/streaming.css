@@ -1,3 +1,6 @@
+body{
+    font-family:'Poppins', sans-serif !important;
+}
 .wrap-chat{
     width:90%;
     border-radius:10px;

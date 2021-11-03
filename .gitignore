@@ -21,3 +21,4 @@ application/logs/*
 /index.php
 /.htaccess
 /update.php
+/node_modules

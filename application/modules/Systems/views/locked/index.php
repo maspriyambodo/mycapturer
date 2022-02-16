@@ -75,8 +75,8 @@ unset($_SESSION['succ_msg']);
                 {extend: 'pdfHtml5', footer: true}
             ],
             "ajax": {
-                "url": "<?php echo site_url('Systems/Locked/lists') ?>",
-                "type": "POST"
+                "url": "Systems/Locked/lists",
+                "type": "GET"
             },
             columnDefs: [
                 {

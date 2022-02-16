@@ -13,7 +13,7 @@
                     <input type="hidden" name="reset_id"/>
                     Are you sure want to reset password the user?
                     <div class="form-group" style="margin:10px 0px;">
-                        <small>*password will be reset to <b>a</b></small>
+                        <small>*password will be reset to <b><?php echo sys_parameter('DEFAULT_PASSWORD')['param_value']; ?></b></small>
                     </div>
                 </div>
                 <div class="modal-footer">

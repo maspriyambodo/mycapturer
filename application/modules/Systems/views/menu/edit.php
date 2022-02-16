@@ -2,7 +2,7 @@
     <div class="card-body">
         <form action="<?php echo site_url('Systems/Menu/Update/'); ?>" method="post">
             <input type="hidden" name="<?php echo $csrf['name'] ?>" value="<?php echo $csrf['hash'] ?>"/>
-            <input type="hidden" name="id_menu" value="<?php echo str_replace(['+', '/', '='], ['-', '_', '~'], $this->encryption->encrypt($data[0]->id_menu)); ?>"/>
+            <input type="hidden" name="id_menu" value="<?php echo Enkrip($data[0]->id_menu); ?>"/>
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -16,7 +16,7 @@
                                 } else {
                                     $select_menu = null;
                                 }
-                                echo '<option value="' . str_replace(['+', '/', '='], ['-', '_', '~'], $this->encryption->encrypt($a->id_menu)) . '" ' . $select_menu . '>' . $a->nama_menu . '</option>';
+                                echo '<option value="' . Enkrip($a->id_menu) . '" ' . $select_menu . '>' . $a->nama_menu . '</option>';
                             }
                             ?>
                         </select>
@@ -59,7 +59,7 @@
                                         } else {
                                             $select_disable = null;
                                         }
-                                        echo '<option value="' . str_replace(['+', '/', '='], ['-', '_', '~'], $this->encryption->encrypt($name_group->id)) . '" ' . $select_group . ' ' . $select_disable . '>' . $name_group->nama . '</option>';
+                                        echo '<option value="' . Enkrip($name_group->id) . '" ' . $select_group . ' ' . $select_disable . '>' . $name_group->nama . '</option>';
                                     }
                                     ?>
                         </select>

@@ -7,7 +7,7 @@ class Users extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('M_users');
-        $this->user = $this->bodo->Dec($this->session->userdata('id_user'));
+        $this->user = Dekrip($this->session->userdata('id_user'));
     }
 
     public function index() {
@@ -32,7 +32,7 @@ class Users extends CI_Controller {
     public function lists() {
         $list = $this->M_users->lists();
         $data = [];
-        $no = Post_input("start");
+        $no = Post_get("start");
         $privilege = $this->bodo->Check_previlege('Systems/Users/index/');
         foreach ($list as $users) {
             $id_user = Enkrip($users->id);
@@ -74,20 +74,20 @@ class Users extends CI_Controller {
     private function _list($data, $privilege) {
         if ($privilege['read']) {
             $output = [
-                "draw" => Post_input('draw'),
+                "draw" => Post_get('draw'),
                 "recordsTotal" => $this->M_users->count_all(),
                 "recordsFiltered" => $this->M_users->count_filtered(),
                 "data" => $data
             ];
         } else {
             $output = [
-                "draw" => Post_input('draw'),
+                "draw" => Post_get('draw'),
                 "recordsTotal" => 0,
                 "recordsFiltered" => 0,
                 "data" => []
             ];
         }
-        ToJson($output);
+        return ToJson($output);
     }
 
     public function Add() {
@@ -123,7 +123,7 @@ class Users extends CI_Controller {
             'allowed_types' => 'gif|jpg|png|gif|ico'
         ];
         $pict = _Upload($param);
-        $role_user = $this->bodo->Dec(Post_input('role_user'));
+        $role_user = Dekrip(Post_input('role_user'));
         if (!$pict['status']) {
             $file_name = 'blank.png';
         } else {
@@ -141,11 +141,12 @@ class Users extends CI_Controller {
     }
 
     private function _Save($data) {
-        if ($data['role_id'] == 1 and $this->bodo->Dec($this->session->userdata('role_id')) != 1) {
-            redirect(base_url('Systems/Users/Add/'), $this->session->set_flashdata('err_msg', 'failed, error while processing user data!'));
+        if ($data['role_id'] == sys_parameter('SUPER_USER')['param_value'] and Dekrip($this->session->userdata('role_id')) != sys_parameter('SUPER_USER')['param_value']) {
+            $result = redirect(base_url('Systems/Users/Add/'), $this->session->set_flashdata('err_msg', 'failed, error while processing user data!'));
         } else {
-            $this->M_users->Save($data);
+            $result = $this->M_users->Save($data);
         }
+        return $result;
     }
 
     public function Check_uname() {
@@ -166,7 +167,7 @@ class Users extends CI_Controller {
     }
 
     public function Delete() {
-        $id_user = $this->bodo->Dec(Post_input("e_id"));
+        $id_user = Dekrip(Post_input("e_id"));
         $data = [
             'id_user' => $id_user,
             'stat_active' => 0,
@@ -186,7 +187,7 @@ class Users extends CI_Controller {
     }
 
     public function Active() {
-        $id_user = $this->bodo->Dec(Post_input("act_id"));
+        $id_user = Dekrip(Post_input("act_id"));
         $data = [
             'id_user' => $id_user,
             'stat_active' => 1,
@@ -201,7 +202,7 @@ class Users extends CI_Controller {
     }
 
     public function Edit() {
-        $id_user = $this->bodo->Dec(Post_get('id'));
+        $id_user = Dekrip(Post_get('id'));
         $data = [
             'data' => $this->M_users->index(['param' => 'get_detail', 'id_user' => $id_user, 'panjang' => 0, 'mulai' => 0]),
             'role' => $this->M_users->Role(0),
@@ -235,9 +236,9 @@ class Users extends CI_Controller {
             'allowed_types' => 'gif|jpg|png|gif|ico'
         ];
         $pict = _Upload($param);
-        $role_user = $this->bodo->Dec(Post_input('role_user'));
+        $role_user = Dekrip(Post_input('role_user'));
         $old_ava = Post_input("old_ava");
-        $id_user = $this->bodo->Dec(Post_input("id_user"));
+        $id_user = Dekrip(Post_input("id_user"));
         if (!$pict['status'] or empty($pict['status'])) {
             $pict['file_name'] = $old_ava;
         } else {
@@ -255,14 +256,25 @@ class Users extends CI_Controller {
     }
 
     public function Reset() {
-        $id = $this->bodo->Dec(Post_input('reset_id'));
+        $id = Dekrip(Post_input('reset_id'));
+        $role_id = Dekrip($this->session->userdata('role_id'));
         if ($id == 1) {
-            $result = redirect(base_url('Systems/Users/index/'), $this->session->set_flashdata('err_msg', 'failed, error while processing user data'));
+            if ($role_id != sys_parameter('SUPER_USER')['param_value']) {
+                $result = redirect(base_url('Systems/Users/index/'), $this->session->set_flashdata('err_msg', 'failed, you don`t have permission for this'));
+            } else {
+                $data = [
+                    'sys_users.pwd' => password_hash(sys_parameter('DEFAULT_PASSWORD')['param_value'], PASSWORD_DEFAULT),
+                    '`sys_users`.`login_attempt`' => 0 + false,
+                    '`sys_users`.`sysupdateuser`' => $this->user + false,
+                    'sys_users.sysupdatedate' => date('Y-m-d H:i:s')
+                ];
+                $result = $this->M_users->Reset($data, $id);
+            }
         } elseif (empty($id) or!$id) {
             $result = redirect(base_url('Systems/Users/index/'), $this->session->set_flashdata('err_msg', 'failed, error while processing user data'));
         } else {
             $data = [
-                'sys_users.pwd' => password_hash("a", PASSWORD_DEFAULT),
+                'sys_users.pwd' => password_hash(sys_parameter('DEFAULT_PASSWORD')['param_value'], PASSWORD_DEFAULT),
                 '`sys_users`.`login_attempt`' => 0 + false,
                 '`sys_users`.`sysupdateuser`' => $this->user + false,
                 'sys_users.sysupdatedate' => date('Y-m-d H:i:s')

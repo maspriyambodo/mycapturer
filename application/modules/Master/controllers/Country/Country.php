@@ -7,13 +7,13 @@ class Country extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('M_country', 'model');
-        $this->user = $this->bodo->Dec($this->session->userdata('id_user'));
+        $this->user = Dekrip($this->session->userdata('id_user'));
     }
 
     public function lists() {
         $list = $this->model->lists();
         $data = [];
-        $no = Post_input("start");
+        $no = Post_get("start");
         $privilege = $this->bodo->Check_previlege('Master/Country/index/');
         foreach ($list as $value) {
             $id = Enkrip($value->id_country);
@@ -55,14 +55,14 @@ class Country extends CI_Controller {
     private function _list($data, $privilege) {
         if ($privilege['read']) {
             $output = [
-                "draw" => Post_input('draw'),
+                "draw" => Post_get('draw'),
                 "recordsTotal" => $this->model->count_all(),
                 "recordsFiltered" => $this->model->count_filtered(),
                 "data" => $data
             ];
         } else {
             $output = [
-                "draw" => Post_input('draw'),
+                "draw" => Post_get('draw'),
                 "recordsTotal" => 0,
                 "recordsFiltered" => 0,
                 "data" => []
@@ -135,8 +135,7 @@ class Country extends CI_Controller {
             $param = [
                 'upload_path' => 'assets/images/systems/flags/',
                 'file_name' => Post_input('code_country'),
-                'input_name' => "flag_country",
-                'allowed_types' => 'gif|jpg|png|gif|ico'
+                'input_name' => "flag_country"
             ];
             $bendera = _Upload($param);
         } else {
@@ -146,7 +145,7 @@ class Country extends CI_Controller {
     }
 
     public function Edit() {
-        $country_id = $this->bodo->Dec(Post_get("id"));
+        $country_id = Dekrip(Post_get("id"));
         $data = [
             'param' => 'get_detail',
             'country_id' => $country_id,
@@ -169,8 +168,7 @@ class Country extends CI_Controller {
             $param = [
                 'upload_path' => 'assets/images/systems/flags/',
                 'file_name' => Post_input('e_code_country'),
-                'input_name' => "e_flag_country",
-                'allowed_types' => 'gif|jpg|png|gif|ico'
+                'input_name' => "e_flag_country"
             ];
             $bendera = _Upload($param);
         } else {
@@ -183,7 +181,7 @@ class Country extends CI_Controller {
         if (!$bendera['file_name']) {
             $result = redirect(base_url('Master/Country/index/'), $this->session->set_flashdata('err_msg', 'error while upload image flag'));
         } else {
-            $country_id = $this->bodo->Dec(Post_input("e_id"));
+            $country_id = Dekrip(Post_input("e_id"));
             $data = [
                 'param' => 'update',
                 'country_id' => $country_id,
@@ -203,7 +201,7 @@ class Country extends CI_Controller {
     }
 
     public function Delete() {
-        $country_id = $this->bodo->Dec(Post_input("d_id"));
+        $country_id = Dekrip(Post_input("d_id"));
         $data = [
             'param' => 'delete',
             'country_id' => $country_id,

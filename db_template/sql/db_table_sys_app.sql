@@ -12,11 +12,11 @@ CREATE TABLE `sys_app` (
   `company_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `app_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `app_year` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `sys_app`
 --
 
 INSERT INTO `sys_app` (`favico`, `logo`, `company_name`, `app_name`, `app_year`) VALUES
-('favicon.png', 'logo.png', 'mycapturer', 'CMS', 2020);
+('favicon.png', 'logo.png', 'Bank Negara Indonesia', 'CMS', 2020);

@@ -5,9 +5,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_Locked extends CI_Model {
 
     var $table = 'sys_users';
-    var $column_order = [null, 'uname', 'name', null, null, null]; //set column field database for datatable orderable
-    var $column_search = ['uname', 'name']; //set column field database for datatable searchable 
-    var $order = ['id' => 'asc']; // default order
+    var $column_order = ['sys_users.id', 'sys_users.uname', 'sys_users.role_id', 'sys_users.last_login', 'sys_users.ip_address', 'sys_users.id']; //set column field database for datatable orderable
+    var $column_search = ['sys_users.uname', 'sys_roles.name', 'sys_users.last_login', 'sys_users.ip_address']; //set column field database for datatable searchable
+    var $order = ['sys_users.id' => 'asc']; // default order
 
     private function _get_datatables_query() {
         $this->db->select('sys_users.id,sys_users.uname,sys_users.pwd,sys_users.role_id,sys_users.pict,sys_users.stat,sys_users.ip_address, sys_users.last_login, sys_roles.name');
@@ -16,12 +16,12 @@ class M_Locked extends CI_Model {
                 ->join('sys_roles', '`sys_users`.`role_id` = `sys_roles`.`id`');
         $i = 0;
         foreach ($this->column_search as $item) { // loop column 
-            if ($_POST['search']['value']) { // if datatable send POST for search
+            if ($_GET['search']['value']) { // if datatable send POST for search
                 if ($i === 0) { // first loop
                     $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
-                    $this->db->like($item, $_POST['search']['value']);
+                    $this->db->like($item, $_GET['search']['value']);
                 } else {
-                    $this->db->or_like($item, $_POST['search']['value']);
+                    $this->db->or_like($item, $_GET['search']['value']);
                 }
 
                 if (count($this->column_search) - 1 == $i) //last loop
@@ -30,8 +30,8 @@ class M_Locked extends CI_Model {
             $i++;
         }
 
-        if (isset($_POST['order'])) { // here order processing
-            $this->db->order_by($this->column_order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+        if (isset($_GET['order'])) { // here order processing
+            $this->db->order_by($this->column_order[$_GET['order']['0']['column']], $_GET['order']['0']['dir']);
         } else if (isset($this->order)) {
             $order = $this->order;
             $this->db->order_by(key($order), $order[key($order)]);
@@ -40,8 +40,8 @@ class M_Locked extends CI_Model {
 
     public function lists() {
         $this->_get_datatables_query();
-        if ($_POST['length'] != -1)
-            $this->db->limit($_POST['length'], $_POST['start']);
+        if ($_GET['length'] != -1)
+            $this->db->limit($_GET['length'], $_GET['start']);
         $query = $this->db->get();
         return $query->result();
     }

@@ -5,20 +5,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_kabupaten extends CI_Model {
 
     var $table = 'mt_wil_kabupaten';
-    var $column_order = [null, 'id_kabupaten', 'nama', 'is_actived', 'longitude', 'latitude', null]; //set column field database for datatable orderable
-    var $column_search = ['id_kabupaten', 'nama', 'longitude', 'latitude']; //set column field database for datatable searchable 
-    var $order = array('id_kabupaten' => 'asc'); // default order
+    var $column_order = ['mt_wil_kabupaten.id_kabupaten','mt_wil_kabupaten.id_kabupaten', 'mt_wil_kabupaten.nama', 'mt_wil_kabupaten.is_actived', 'mt_wil_kabupaten.longitude', 'mt_wil_kabupaten.latitude', 'mt_wil_kabupaten.id_kabupaten', 'mt_wil_kabupaten.id_kabupaten']; //set column field database for datatable orderable
+    var $column_search = ['mt_wil_kabupaten.id_kabupaten', 'mt_wil_kabupaten.nama', 'mt_wil_kabupaten.longitude', 'mt_wil_kabupaten.latitude']; //set column field database for datatable searchable 
+    var $order = ['id_kabupaten' => 'asc']; // default order
 
     private function _get_datatables_query() {
         $this->db->from($this->table);
         $i = 0;
         foreach ($this->column_search as $item) { // loop column 
-            if ($_POST['search']['value']) { // if datatable send POST for search
+            if ($_GET['search']['value']) { // if datatable send POST for search
                 if ($i === 0) { // first loop
                     $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
-                    $this->db->like($item, $_POST['search']['value']);
+                    $this->db->like($item, $_GET['search']['value']);
                 } else {
-                    $this->db->or_like($item, $_POST['search']['value']);
+                    $this->db->or_like($item, $_GET['search']['value']);
                 }
 
                 if (count($this->column_search) - 1 == $i) //last loop
@@ -27,8 +27,8 @@ class M_kabupaten extends CI_Model {
             $i++;
         }
 
-        if (isset($_POST['order'])) { // here order processing
-            $this->db->order_by($this->column_order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+        if (isset($_GET['order'])) { // here order processing
+            $this->db->order_by($this->column_order[$_GET['order']['0']['column']], $_GET['order']['0']['dir']);
         } else if (isset($this->order)) {
             $order = $this->order;
             $this->db->order_by(key($order), $order[key($order)]);
@@ -37,8 +37,8 @@ class M_kabupaten extends CI_Model {
 
     public function lists() {
         $this->_get_datatables_query();
-        if ($_POST['length'] != -1)
-            $this->db->limit($_POST['length'], $_POST['start']);
+        if ($_GET['length'] != -1)
+            $this->db->limit($_GET['length'], $_GET['start']);
         $query = $this->db->get();
         return $query->result();
     }
@@ -119,7 +119,7 @@ class M_kabupaten extends CI_Model {
             redirect(base_url('Master/Wilayah/Kabupaten/index/'), $this->session->set_flashdata('succ_msg', 'data kabupaten has been updated'));
         }
     }
-    
+
     public function Delete($data, $id_kab) {
         $this->db->trans_begin();
         $this->db->set($data)
@@ -133,7 +133,7 @@ class M_kabupaten extends CI_Model {
             redirect(base_url('Master/Wilayah/Kabupaten/index/'), $this->session->set_flashdata('succ_msg', 'data kabupaten has been deleted'));
         }
     }
-    
+
     public function Active($data, $id_kab) {
         $this->db->trans_begin();
         $this->db->set($data)

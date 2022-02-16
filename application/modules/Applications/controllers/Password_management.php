@@ -32,7 +32,7 @@ class Password_management extends CI_Controller {
     public function lists() {
         $list = $this->model->lists();
         $data = [];
-        $no = Post_input("start");
+        $no = Post_get("start");
         $privilege = $this->bodo->Check_previlege('Applications/Password_management/index/');
         foreach ($list as $value) {
             $id = Enkrip($value->id);
@@ -74,14 +74,14 @@ class Password_management extends CI_Controller {
     private function _list($data, $privilege) {
         if ($privilege['read']) {
             $output = [
-                "draw" => Post_input('draw'),
+                "draw" => Post_get('draw'),
                 "recordsTotal" => $this->model->count_all(),
                 "recordsFiltered" => $this->model->count_filtered(),
                 "data" => $data
             ];
         } else {
             $output = [
-                "draw" => Post_input('draw'),
+                "draw" => Post_get('draw'),
                 "recordsTotal" => 0,
                 "recordsFiltered" => 0,
                 "data" => []

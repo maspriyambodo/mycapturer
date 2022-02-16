@@ -39,6 +39,7 @@ class Profile extends CI_Controller {
     public function Gallery() {
         $paginate = $this->Paginate();
         $data = [
+            'csrf' => $this->bodo->Csrf(),
             'siteTitle' => 'Gallery | ' . $this->bodo->Sys('company_name'),
             'pageTitle' => 'Our Portfolio',
             'description' => substr($this->bodo->Compro()['meta_description'], 0, 150),

@@ -7,7 +7,7 @@ class Menu extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('M_menu');
-        $this->user = $this->bodo->Dec($this->session->userdata('id_user'));
+        $this->user = Dekrip($this->session->userdata('id_user'));
     }
 
     public function index() {
@@ -33,7 +33,7 @@ class Menu extends CI_Controller {
 
     public function Save() {
         if (Post_input('menu_parent')) {
-            $parent = $this->bodo->Dec(Post_input('menu_parent'));
+            $parent = Dekrip(Post_input('menu_parent'));
         } else {
             $parent = "NULL";
         }
@@ -48,7 +48,7 @@ class Menu extends CI_Controller {
             'description' => Post_input('desc_txt'),
             'nama_menu' => Post_input('nama_menu'),
             'link_menu' => Post_input('link_menu'),
-            'gr_menu' => $this->bodo->Dec(Post_input('gr_menu')),
+            'gr_menu' => Dekrip(Post_input('gr_menu')),
             'ico_menu' => Post_input('ico_menu'),
             'order_no' => $new_order,
             'user_login' => $this->user
@@ -62,7 +62,7 @@ class Menu extends CI_Controller {
     }
 
     public function Delete() {
-        $id = $this->bodo->dec(Post_input("d_id_menu"));
+        $id = Dekrip(Post_input("d_id_menu"));
         $data = [
             'id' => $id,
             'user_login' => $this->user
@@ -76,7 +76,7 @@ class Menu extends CI_Controller {
     }
 
     public function Set_active() {
-        $id = $this->bodo->dec(Post_input("a_id_menu"));
+        $id = Dekrip(Post_input("a_id_menu"));
         $data = [
             'id' => $id,
             'user_login' => $this->user
@@ -90,7 +90,7 @@ class Menu extends CI_Controller {
     }
 
     public function Edit() {
-        $id = $this->bodo->dec(Post_get("id"));
+        $id = Dekrip(Post_get("id"));
         $data = [
             'data' => $this->M_menu->Edit($id),
             'menu' => $this->M_menu->index()->result(),
@@ -117,8 +117,27 @@ class Menu extends CI_Controller {
         return $this->parser->parse('Template/layout', $data);
     }
 
+    private function get_groupMenu($id_menu, $gr_menu) {
+        $exec = $this->M_menu->groupMenu($id_menu);
+        $old_groupmenu = $exec[0]->group_menu;
+        $order = $exec[0]->order_no;
+        $new_order = $this->M_menu->New_order($gr_menu);
+        if ($old_groupmenu == $gr_menu) {
+            $result = $order;
+        } else {
+            if (empty($new_order[0]->order_no) or ($new_order[0]->order_no == 0)) {
+                $result = $gr_menu * 100;
+            } else {
+                $result = $new_order[0]->order_no + 1;
+            }
+        }
+        return $result;
+    }
+
     public function Update() {
-        $parent = $this->bodo->dec(Post_input("menu_parent"));
+        $id_menu = Dekrip(Post_input('id_menu'));
+        $nomor_order = $this->get_groupMenu($id_menu, Dekrip(Post_input("gr_menu")));
+        $parent = Dekrip(Post_input("menu_parent"));
         if ($parent) {
             $id_parent = $parent;
         } else {
@@ -129,11 +148,11 @@ class Menu extends CI_Controller {
             'description' => Post_input('desc_txt'),
             'menu' => Post_input("nama_menu"),
             'location' => Post_input("link_menu"),
-            'nomor_order' => Post_input("order_no"),
-            'grup' => $this->bodo->dec(Post_input("gr_menu")),
+            'nomor_order' => $nomor_order,
+            'grup' => Dekrip(Post_input("gr_menu")),
             'icon_menu' => Post_input("ico_menu"),
             'user_login' => $this->user,
-            'id_menu' => $this->bodo->dec(Post_input("id_menu"))
+            'id_menu' => $id_menu
         ];
         $exec = $this->M_menu->Update($data);
         if ($exec['status'] == false) {
@@ -144,7 +163,7 @@ class Menu extends CI_Controller {
     }
 
     public function Get_order() {
-        $role_id = $this->bodo->Dec(Post_get("id"));
+        $role_id = Dekrip(Post_get("id"));
         $exec = $this->M_menu->Get_order($role_id);
         ToJson($exec->result());
     }

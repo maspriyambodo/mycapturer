@@ -95,14 +95,13 @@ unset($_SESSION['succ_msg']);
                 {extend: 'pdfHtml5', footer: true}
             ],
             "ajax": {
-                "url": "<?php echo site_url('Applications/Password_management/lists') ?>",
-                "type": "POST"
+                "url": "Applications/Password_management/lists",
+                "type": "GET"
             },
             columnDefs: [
                 {
                     targets: 0,
-                    className: 'text-center',
-                    orderable: false
+                    className: 'text-center'
                 },
                 {
                     targets: 1,
@@ -115,8 +114,7 @@ unset($_SESSION['succ_msg']);
                 },
                 {
                     targets: 3,
-                    className: 'text-center',
-                    orderable: false
+                    className: 'text-center'
                 },
                 {
                     targets: 4,

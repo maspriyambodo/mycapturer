@@ -5,20 +5,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_kecamatan extends CI_Model {
 
     var $table = 'mt_wil_kecamatan';
-    var $column_order = [null, 'id_kecamatan', 'nama', 'is_actived', null, null, null, null]; //set column field database for datatable orderable
-    var $column_search = ['id_kecamatan', 'nama', 'longitude', 'latitude']; //set column field database for datatable searchable 
-    var $order = array('id_kecamatan' => 'asc'); // default order
+    var $column_order = ['mt_wil_kecamatan.id_kecamatan', 'mt_wil_kecamatan.id_kecamatan', 'mt_wil_kecamatan.nama', 'mt_wil_kecamatan.is_actived', 'mt_wil_kecamatan.longitude', 'mt_wil_kecamatan.latitude', 'mt_wil_kecamatan.id_kecamatan', 'mt_wil_kecamatan.id_kecamatan']; //set column field database for datatable orderable
+    var $column_search = ['mt_wil_kecamatan.id_kecamatan', 'mt_wil_kecamatan.nama', 'mt_wil_kecamatan.longitude', 'mt_wil_kecamatan.latitude']; //set column field database for datatable searchable 
+    var $order = ['mt_wil_kecamatan.id_kecamatan' => 'asc']; // default order
 
     private function _get_datatables_query() {
         $this->db->from($this->table);
         $i = 0;
         foreach ($this->column_search as $item) { // loop column 
-            if ($_POST['search']['value']) { // if datatable send POST for search
+            if (Post_get('search')['value']) { // if datatable send POST for search
                 if ($i === 0) { // first loop
                     $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
-                    $this->db->like($item, $_POST['search']['value']);
+                    $this->db->like($item, Post_get('search')['value']);
                 } else {
-                    $this->db->or_like($item, $_POST['search']['value']);
+                    $this->db->or_like($item, Post_get('search')['value']);
                 }
                 if (count($this->column_search) - 1 == $i) //last loop
                     $this->db->group_end(); //close bracket
@@ -26,8 +26,8 @@ class M_kecamatan extends CI_Model {
             $i++;
         }
 
-        if (isset($_POST['order'])) { // here order processing
-            $this->db->order_by($this->column_order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+        if (Post_get('order')) { // here order processing
+            $this->db->order_by($this->column_order[Post_get('order')['0']['column']], Post_get('order')['0']['dir']);
         } else if (isset($this->order)) {
             $order = $this->order;
             $this->db->order_by(key($order), $order[key($order)]);
@@ -36,8 +36,8 @@ class M_kecamatan extends CI_Model {
 
     public function lists() {
         $this->_get_datatables_query();
-        if ($_POST['length'] != -1)
-            $this->db->limit($_POST['length'], $_POST['start']);
+        if (Post_get('length') != -1)
+            $this->db->limit(Post_get('length'), Post_get('start'));
         $query = $this->db->get();
         return $query->result();
     }

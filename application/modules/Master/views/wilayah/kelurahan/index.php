@@ -98,9 +98,13 @@ unset($_SESSION['succ_msg']);
                 {extend: 'csvHtml5', footer: true},
                 {extend: 'pdfHtml5', footer: true}
             ],
+            lengthMenu: [
+                [10, 50, 100, 500],
+                ['10', '50', '100', '500']
+            ],
             "ajax": {
-                "url": "<?php echo site_url('Master/Wilayah/Kelurahan/Lists') ?>",
-                "type": "POST"
+                "url": "Master/Wilayah/Kelurahan/Lists",
+                "type": "GET"
             },
             columnDefs: [
                 {
@@ -140,9 +144,7 @@ unset($_SESSION['succ_msg']);
             ]
         });
     };
-    function View_maps(val) {
-        window.open('https://www.google.com/maps/place/Aceh/@' + val + ',7z', '_blank');
-    }
+    
     function isNumber(b) {
         b = (b) ? b : window.event;
         var a = (b.which) ? b.which : b.keyCode;

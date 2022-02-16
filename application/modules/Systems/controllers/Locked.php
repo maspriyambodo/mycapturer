@@ -7,7 +7,7 @@ class Locked extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('M_Locked');
-        $this->user = $this->bodo->Dec($this->session->userdata('id_user'));
+        $this->user = Dekrip($this->session->userdata('id_user'));
     }
 
     public function index() {
@@ -32,7 +32,7 @@ class Locked extends CI_Controller {
     public function lists() {
         $list = $this->M_Locked->lists();
         $data = [];
-        $no = Post_input("start");
+        $no = Post_get("start");
         $privilege = $this->bodo->Check_previlege('Systems/Users/index/');
         foreach ($list as $users) {
             $id_user = Enkrip($users->id);
@@ -57,25 +57,25 @@ class Locked extends CI_Controller {
     private function _list($data, $privilege) {
         if ($privilege['read']) {
             $output = [
-                "draw" => Post_input('draw'),
+                "draw" => Post_get('draw'),
                 "recordsTotal" => $this->M_Locked->count_all(),
                 "recordsFiltered" => $this->M_Locked->count_filtered(),
                 "data" => $data
             ];
         } else {
             $output = [
-                "draw" => Post_input('draw'),
+                "draw" => Post_get('draw'),
                 "recordsTotal" => 0,
                 "recordsFiltered" => 0,
                 "data" => []
             ];
         }
-        ToJson($output);
+        return ToJson($output);
     }
 
     public function Unlock() {
-        $id_user = $this->bodo->Dec(Post_input('id_user'));
-        $this->M_Locked->Unlock($id_user);
+        $id_user = Dekrip(Post_input('id_user'));
+        return $this->M_Locked->Unlock($id_user);
     }
 
 }

@@ -92,8 +92,8 @@ unset($_SESSION['succ_msg']);
                 {extend: 'pdfHtml5', footer: true}
             ],
             "ajax": {
-                "url": "<?php echo site_url('Master/Country/lists') ?>",
-                "type": "POST"
+                "url": "Master/Country/lists",
+                "type": "GET"
             },
             columnDefs: [
                 {
@@ -112,8 +112,7 @@ unset($_SESSION['succ_msg']);
                 },
                 {
                     targets: 4,
-                    className: 'text-center',
-                    orderable: false
+                    className: 'text-center'
                 },
                 {
                     targets: 5,

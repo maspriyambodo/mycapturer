@@ -98,8 +98,8 @@ unset($_SESSION['succ_msg']);
                 {extend: 'pdfHtml5', footer: true}
             ],
             "ajax": {
-                "url": "<?php echo site_url('Master/Wilayah/Kabupaten/Lists') ?>",
-                "type": "POST"
+                "url": "Master/Wilayah/Kabupaten/Lists",
+                "type": "GET"
             },
             columnDefs: [
                 {
@@ -117,13 +117,11 @@ unset($_SESSION['succ_msg']);
                 },
                 {
                     targets: 4,
-                    className: 'text-center',
-                    orderable: false
+                    className: 'text-center'
                 },
                 {
                     targets: 5,
-                    className: 'text-center',
-                    orderable: false
+                    className: 'text-center'
                 },
                 {
                     targets: 6,

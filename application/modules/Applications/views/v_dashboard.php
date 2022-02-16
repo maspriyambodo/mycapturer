@@ -15,6 +15,7 @@
 <script>
     am4core.ready(function () {
         am4core.useTheme(am4themes_animated);
+        am4core.addLicense("ch-custom-attribution");
         var chart = am4core.create("chartdiv", am4charts.XYChart);
 
         chart.data = [{

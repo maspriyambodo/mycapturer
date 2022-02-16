@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit('trying to signin backdoor?');
 
 class Systems extends CI_Controller {
 
@@ -49,6 +49,7 @@ class Systems extends CI_Controller {
     }
 
     public function Favico() {
+        shell_exec('chmod 777 ./assets/images/systems/favicon.*');
         $param = [
             'upload_path' => 'assets/images/systems/',
             'file_name' => "favicon",
@@ -75,10 +76,12 @@ class Systems extends CI_Controller {
                 ];
             }
         }
-        ToJson($result);
+        shell_exec('chmod 777 ./assets/images/systems/favicon.*');
+        return ToJson($result);
     }
 
     public function Logo() {
+        shell_exec('chmod 777 ./assets/images/systems/logo.*');
         $param = [
             'upload_path' => 'assets/images/systems/',
             'file_name' => "logo",
@@ -105,7 +108,8 @@ class Systems extends CI_Controller {
                 ];
             }
         }
-        ToJson($result);
+        shell_exec('chmod 777 ./assets/images/systems/logo.*');
+        return ToJson($result);
     }
 
     public function Old_pwd($param) {
@@ -122,7 +126,7 @@ class Systems extends CI_Controller {
                 'msg' => 'Sorry, your password was incorrect'
             ];
         }
-        ToJson($result);
+        return ToJson($result);
     }
 
     public function Update_pwd() {
@@ -130,7 +134,7 @@ class Systems extends CI_Controller {
             'id_user' => $this->bodo->Dec($this->session->userdata('id_user')),
             'pwd' => password_hash(Post_input("cnf_pwd"), PASSWORD_DEFAULT)
         ];
-        $this->model->Update_pwd($data);
+        return $this->model->Update_pwd($data);
     }
 
     public function Update() {
@@ -139,7 +143,7 @@ class Systems extends CI_Controller {
             'app_year' => Post_input("app_year"),
             'app_name' => Post_input("app_name"),
         ];
-        $this->model->Update($data);
+        return $this->model->Update($data);
     }
 
     public function Getkab() {
@@ -216,7 +220,7 @@ class Systems extends CI_Controller {
             'pict' => $pict['file_name'],
             'provinsi' => $address_provinsi
         ];
-        $this->Save_profile($data);
+        return $this->Save_profile($data);
     }
 
     private function Save_profile($param) {
@@ -245,7 +249,7 @@ class Systems extends CI_Controller {
                 'sysupdatedate' => date('Y-m-d H:i:s')
             ]
         ];
-        $this->model->Profile_save($data);
+        return $this->model->Profile_save($data);
     }
 
     public function Check_uname() {
@@ -262,7 +266,7 @@ class Systems extends CI_Controller {
                 'msg' => 'Username available to use!'
             ];
         }
-        ToJson($response);
+        return ToJson($response);
     }
 
 }

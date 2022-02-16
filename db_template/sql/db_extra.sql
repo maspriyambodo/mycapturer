@@ -14,10 +14,10 @@ ALTER TABLE `compro_option`
 -- Indexes for table `dt_notif`
 --
 ALTER TABLE `dt_notif`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`id`) USING BTREE,
   ADD UNIQUE KEY `id` (`id`) USING BTREE,
-  ADD KEY `role_id` (`role_id`),
-  ADD KEY `syscreateuser` (`syscreateuser`);
+  ADD KEY `role_id` (`role_id`) USING BTREE,
+  ADD KEY `syscreateuser` (`syscreateuser`) USING BTREE;
 
 --
 -- Indexes for table `dt_portfolio`
@@ -152,6 +152,13 @@ ALTER TABLE `sys_menu_group`
   ADD UNIQUE KEY `id` (`id`) USING BTREE;
 
 --
+-- Indexes for table `sys_param`
+--
+ALTER TABLE `sys_param`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`) USING BTREE;
+
+--
 -- Indexes for table `sys_permissions`
 --
 ALTER TABLE `sys_permissions`
@@ -165,7 +172,7 @@ ALTER TABLE `sys_permissions`
 --
 ALTER TABLE `sys_roles`
   ADD PRIMARY KEY (`id`) USING BTREE,
-  ADD KEY `id` (`id`);
+  ADD KEY `id` (`id`) USING BTREE;
 
 --
 -- Indexes for table `sys_users`
@@ -225,7 +232,7 @@ ALTER TABLE `dt_post_report`
 -- AUTO_INCREMENT for table `dt_pwd`
 --
 ALTER TABLE `dt_pwd`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=226;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=242;
 
 --
 -- AUTO_INCREMENT for table `dt_services`
@@ -243,7 +250,7 @@ ALTER TABLE `dt_subscriber`
 -- AUTO_INCREMENT for table `dt_users`
 --
 ALTER TABLE `dt_users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `mt_country`
@@ -255,7 +262,7 @@ ALTER TABLE `mt_country`
 -- AUTO_INCREMENT for table `sys_menu`
 --
 ALTER TABLE `sys_menu`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `sys_menu_group`
@@ -267,7 +274,7 @@ ALTER TABLE `sys_menu_group`
 -- AUTO_INCREMENT for table `sys_permissions`
 --
 ALTER TABLE `sys_permissions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `sys_roles`
@@ -279,7 +286,7 @@ ALTER TABLE `sys_roles`
 -- AUTO_INCREMENT for table `sys_users`
 --
 ALTER TABLE `sys_users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

@@ -82,7 +82,7 @@ class Menu_group extends CI_Controller {
             $data = [
                 'param' => 'edit',
                 'id_grup' => $id_grup,
-                'nama_group' => Post_input("nama_grup"),
+                'nama_group' => Post_input("e_nama_grup"),
                 'deskripsi' => Post_input("e_des_grup"),
                 'order' => 0,
                 'user_login' => $this->user

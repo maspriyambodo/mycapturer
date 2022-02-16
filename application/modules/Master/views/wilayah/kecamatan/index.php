@@ -97,15 +97,18 @@ unset($_SESSION['succ_msg']);
                 {extend: 'csvHtml5', footer: true},
                 {extend: 'pdfHtml5', footer: true}
             ],
+            lengthMenu: [
+                [10, 50, 100, 500],
+                ['10', '50', '100', '500']
+            ],
             "ajax": {
-                "url": "<?php echo site_url('Master/Wilayah/Kecamatan/Lists') ?>",
-                "type": "POST"
+                "url": "Master/Wilayah/Kecamatan/Lists",
+                "type": "GET"
             },
             columnDefs: [
                 {
                     targets: 0,
-                    className: 'text-center',
-                    orderable: false
+                    className: 'text-center'
                 },
                 {
                     targets: 1,
@@ -132,15 +135,12 @@ unset($_SESSION['succ_msg']);
                 },
                 {
                     targets: 7,
-                    className: 'text-center',
-                    orderable: false
+                    className: 'text-center'
                 }
             ]
         });
     };
-    function View_maps(val) {
-        window.open('https://www.google.com/maps/place/Aceh/@' + val + ',7z', '_blank');
-    }
+
     function isNumber(b) {
         b = (b) ? b : window.event;
         var a = (b.which) ? b.which : b.keyCode;

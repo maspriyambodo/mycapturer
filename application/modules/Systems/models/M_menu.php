@@ -135,4 +135,24 @@ class M_menu extends CI_Model {
         return $result;
     }
 
+    public function groupMenu($id_menu) {
+        $exec = $this->db->select('group_menu,order_no')
+                ->from('sys_menu')
+                ->where('`sys_menu`.`id`', $id_menu, false)
+                ->limit(1)
+                ->get()
+                ->result();
+        return $exec;
+    }
+
+    public function New_order($param) {
+        $exec = $this->db->select('Max( sys_menu.order_no ) AS order_no')
+                ->from('sys_menu')
+                ->where('`sys_menu`.`group_menu`', $param, false)
+                ->get()
+                ->result();
+        log_message('error', $this->db->last_query());
+        return $exec;
+    }
+
 }

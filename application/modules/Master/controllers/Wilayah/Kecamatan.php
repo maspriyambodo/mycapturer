@@ -6,7 +6,7 @@ class Kecamatan extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->user = $this->bodo->Dec($this->session->userdata('id_user'));
+        $this->user = Dekrip($this->session->userdata('id_user'));
         $this->load->model('M_kecamatan');
     }
 
@@ -32,7 +32,7 @@ class Kecamatan extends CI_Controller {
     public function Lists() {
         $list = $this->M_kecamatan->lists();
         $data = [];
-        $no = Post_input("start");
+        $no = Post_get("start");
         $privilege = $this->bodo->Check_previlege('Master/Wilayah/Kecamatan/index/');
         foreach ($list as $users) {
             $id_user = Enkrip($users->id_kecamatan);
@@ -69,12 +69,12 @@ class Kecamatan extends CI_Controller {
             $data[] = $row;
         }
         $output = [
-            "draw" => Post_input('draw'),
+            "draw" => Post_get('draw'),
             "recordsTotal" => $this->M_kecamatan->count_all(),
             "recordsFiltered" => $this->M_kecamatan->count_filtered(),
             "data" => $data
         ];
-        ToJson($output);
+        return ToJson($output);
     }
 
     public function Get_kab() {
@@ -123,7 +123,7 @@ class Kecamatan extends CI_Controller {
     }
 
     public function Detail() {
-        $id_kel = $this->bodo->Dec(Post_get('id'));
+        $id_kel = Dekrip(Post_get('id'));
         $exec = $this->M_kecamatan->Detail($id_kel);
         if ($exec) {
             $response = [
@@ -153,7 +153,7 @@ class Kecamatan extends CI_Controller {
     }
 
     public function Delete() {
-        $id = $this->bodo->Dec(Post_input('d_id'));
+        $id = Dekrip(Post_input('d_id'));
         $data = [
             'is_actived' => 0 + false,
             'sysdeleteuser' => $this->user,
@@ -163,7 +163,7 @@ class Kecamatan extends CI_Controller {
     }
 
     public function Activate() {
-        $id = $this->bodo->Dec(Post_input('act_id'));
+        $id = Dekrip(Post_input('act_id'));
         $data = [
             'is_actived' => 1 + false,
             'sysupdateuser' => $this->user + false,

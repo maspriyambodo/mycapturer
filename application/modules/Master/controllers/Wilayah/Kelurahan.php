@@ -6,7 +6,7 @@ class Kelurahan extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->user = $this->bodo->Dec($this->session->userdata('id_user'));
+        $this->user = Dekrip($this->session->userdata('id_user'));
         $this->load->model('M_kelurahan');
     }
 
@@ -32,7 +32,7 @@ class Kelurahan extends CI_Controller {
     public function Lists() {
         $list = $this->M_kelurahan->lists();
         $data = [];
-        $no = Post_input("start");
+        $no = Post_get("start");
         $privilege = $this->bodo->Check_previlege('Master/Wilayah/Kelurahan/index/');
         foreach ($list as $users) {
             $id_user = Enkrip($users->id_kelurahan);
@@ -69,7 +69,7 @@ class Kelurahan extends CI_Controller {
             $data[] = $row;
         }
         $output = array(
-            "draw" => Post_input('draw'),
+            "draw" => Post_get('draw'),
             "recordsTotal" => $this->M_kelurahan->count_all(),
             "recordsFiltered" => $this->M_kelurahan->count_filtered(),
             "data" => $data,
@@ -108,7 +108,7 @@ class Kelurahan extends CI_Controller {
     }
 
     public function Update() {
-        $id_kelurahan = $this->bodo->Dec(Post_input('e_id'));
+        $id_kelurahan = Dekrip(Post_input('e_id'));
         $data = [
             'id_kecamatan' => Post_input('e_kectxt'),
             'nama' => Post_input('e_keltxt'),
@@ -136,7 +136,7 @@ class Kelurahan extends CI_Controller {
     }
 
     public function Detail() {
-        $id_kel = $this->bodo->Dec(Post_get('id'));
+        $id_kel = Dekrip(Post_get('id'));
         $exec = $this->M_kelurahan->Detail($id_kel);
         if ($exec) {
             $response = [
@@ -153,7 +153,7 @@ class Kelurahan extends CI_Controller {
     }
 
     public function Delete() {
-        $id = $this->bodo->Dec(Post_input('d_id'));
+        $id = Dekrip(Post_input('d_id'));
         $data = [
             'is_actived' => 0 + false,
             'sysdeleteuser' => $this->user,
@@ -163,7 +163,7 @@ class Kelurahan extends CI_Controller {
     }
 
     public function Activate() {
-        $id = $this->bodo->Dec(Post_input('act_id'));
+        $id = Dekrip(Post_input('act_id'));
         $data = [
             'is_actived' => 1 + false,
             'sysupdateuser' => $this->user + false,

@@ -37,7 +37,7 @@ $group_menu = $this->M_default->Group_menu();
     <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
         <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
             <a href="javascript:void(0);">
-                <img alt="company_logo" src="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('logo')); ?>" class="img-fluid" style="margin: 15px 0px;height:55px;"/>
+                <img alt="company_logo" src="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('logo')); ?>" class="img-fluid" style="margin: 15px 0px;width: 30%;"/>
             </a>
             <div class="d-flex align-items-center">
                 <button class="btn p-0 burger-icon burger-icon-left" id="kt_aside_mobile_toggle">
@@ -55,11 +55,11 @@ $group_menu = $this->M_default->Group_menu();
                 <div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
                     <div class="brand flex-column-auto" id="kt_brand" style="height:65px;">
                         <a href="javascript:void(0);" class="brand-logo">
-                            <img alt="company_logo" src="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('logo')); ?>" class="img-fluid" style="margin: 15px 0px;width:55px;"/>
+                            <img alt="company_logo" src="<?php echo base_url('assets/images/systems/' . $this->bodo->Sys('logo')); ?>" class="img-fluid" style="margin: 15px 0px;height:55px;"/>
                         </a>
                         <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle" aria-label="brand-toggle">
                             <span class="svg-icon svg-icon svg-icon-xl">
-                                <i class="fas fa-bars"></i>
+                                <i class="fas fa-angle-double-left"></i>
                             </span>
                         </button>
                     </div>
@@ -148,7 +148,7 @@ $group_menu = $this->M_default->Group_menu();
                             <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
                                 <div class="d-flex align-items-center flex-wrap mr-1">
                                     <div class="d-flex align-items-baseline flex-wrap mr-5">
-                                        <h5 class="text-dark font-weight-bold my-1 mr-5">{pagetitle}</h5>
+                                        <h5 id="pagetitle" class="text-dark font-weight-bold my-1 mr-5">{pagetitle}</h5>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center">
@@ -179,7 +179,7 @@ $group_menu = $this->M_default->Group_menu();
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js" type="text/javascript"></script>
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js" type="text/javascript"></script>
                         <script src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.23/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.3/fc-3.3.2/fh-3.1.8/kt-2.6.1/r-2.2.7/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.1/sp-1.2.2/sl-1.3.1/datatables.min.js" type="text/javascript"></script>
-                        <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+                        <!--<script src="https://js.pusher.com/7.0/pusher.min.js"></script>-->
                         <div class="d-flex flex-column-fluid"><div class="container-fluid">{content}</div></div>
                     </div>
                     <div class="footer bg-white py-4 d-flex flex-lg-column" id="kt_footer">
@@ -298,11 +298,12 @@ $group_menu = $this->M_default->Group_menu();
         </div>
         <div id="kt_scrolltop" class="scrolltop"><span class="svg-icon"><i class="fas fa-arrow-up"></i></span></div>
         <ul id="sticky_toolbar"></ul>
+
         <script>
             var KTAppSettings = {};
             var menu = $('.menu-item .menu-item-active').parent('ul').parent().parent();
             menu.addClass('menu-item-active menu-item-open');
         </script>
-        <script src="<?php echo base_url('assets/js/app_notification.js'); ?>"></script>
+        <!--<script src="<?php echo base_url('assets/js/app_notification.js'); ?>"></script>-->
     </body>
 </html>

@@ -5,9 +5,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_pwdmgr extends CI_Model {
 
     var $table = 'password_management';
-    var $column_order = [null, 'owner', null, null, 'lastcheck', 'status_aktif', null]; //set column field database for datatable orderable
-    var $column_search = ['owner', 'link', 'username', 'note']; //set column field database for datatable searchable 
-    var $order = ['id' => 'asc']; // default order
+    var $column_order = ['password_management.id', 'password_management.owner', 'password_management.link', 'password_management.username', 'password_management.lastcheck', 'password_management.status_aktif', 'password_management.id']; //set column field database for datatable orderable
+    var $column_search = ['password_management.owner', 'password_management.link', 'password_management.username', 'password_management.note']; //set column field database for datatable searchable
+    var $order = ['password_management.id' => 'asc']; // default order
 
     private function _get_datatables_query() {
         $this->db->select()
@@ -15,12 +15,12 @@ class M_pwdmgr extends CI_Model {
                 ->where('password_management.syscreateuser', Dekrip($this->session->userdata('id_user')), false);
         $i = 0;
         foreach ($this->column_search as $item) { // loop column 
-            if ($_POST['search']['value']) { // if datatable send POST for search
+            if ($_GET['search']['value']) { // if datatable send POST for search
                 if ($i === 0) { // first loop
                     $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
-                    $this->db->like($item, $_POST['search']['value']);
+                    $this->db->like($item, $_GET['search']['value']);
                 } else {
-                    $this->db->or_like($item, $_POST['search']['value']);
+                    $this->db->or_like($item, $_GET['search']['value']);
                 }
 
                 if (count($this->column_search) - 1 == $i) //last loop
@@ -29,8 +29,8 @@ class M_pwdmgr extends CI_Model {
             $i++;
         }
 
-        if (isset($_POST['order'])) { // here order processing
-            $this->db->order_by($this->column_order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+        if (isset($_GET['order'])) { // here order processing
+            $this->db->order_by($this->column_order[$_GET['order']['0']['column']], $_GET['order']['0']['dir']);
         } else if (isset($this->order)) {
             $order = $this->order;
             $this->db->order_by(key($order), $order[key($order)]);
@@ -39,8 +39,8 @@ class M_pwdmgr extends CI_Model {
 
     public function lists() {
         $this->_get_datatables_query();
-        if ($_POST['length'] != -1)
-            $this->db->limit($_POST['length'], $_POST['start']);
+        if ($_GET['length'] != -1)
+            $this->db->limit($_GET['length'], $_GET['start']);
         $query = $this->db->get();
         return $query->result();
     }

@@ -32,7 +32,7 @@ class Post extends CI_Controller {
     public function lists() {
         $list = $this->M_post->lists();
         $data = [];
-        $no = Post_input("start");
+        $no = Post_get("start");
         $privilege = $this->bodo->Check_previlege('Blog/Post/index/');
         foreach ($list as $post) {
             $id_post = Enkrip($post->id);
@@ -74,20 +74,20 @@ class Post extends CI_Controller {
     private function _list($data, $privilege) {
         if ($privilege['read']) {
             $output = [
-                "draw" => Post_input('draw'),
+                "draw" => Post_get('draw'),
                 "recordsTotal" => $this->M_post->count_all(),
                 "recordsFiltered" => $this->M_post->count_filtered(),
                 "data" => $data
             ];
         } else {
             $output = [
-                "draw" => Post_input('draw'),
+                "draw" => Post_get('draw'),
                 "recordsTotal" => 0,
                 "recordsFiltered" => 0,
                 "data" => []
             ];
         }
-        ToJson($output);
+        return ToJson($output);
     }
 
     public function Add() {
@@ -117,12 +117,12 @@ class Post extends CI_Controller {
 
     public function Browser() {
         $data['csrf'] = $this->bodo->Csrf();
-        $this->load->view('elfinder', $data);
+        return $this->load->view('elfinder', $data);
     }
 
     public function elfinder_init() {
         $opts = initialize_elfinder();
-        $this->load->library('elfinder_lib', $opts);
+        return $this->load->library('elfinder_lib', $opts);
     }
 
     public function Save() {
@@ -139,7 +139,7 @@ class Post extends CI_Controller {
             'syscreateuser' => $this->user,
             'syscreatedate' => date('Y-m-d H:i:s')
         ];
-        $this->M_post->Save($data);
+        return $this->M_post->Save($data);
     }
 
     public function Update() {
@@ -157,7 +157,7 @@ class Post extends CI_Controller {
             'sysupdateuser' => $this->user,
             'sysupdatedate' => date('Y-m-d H:i:s')
         ];
-        $this->M_post->Update($data, $id_post);
+        return $this->M_post->Update($data, $id_post);
     }
 
     public function Edit() {
@@ -195,7 +195,7 @@ class Post extends CI_Controller {
             'sysdeleteuser' => $this->user + false,
             'sysdeletedate' => date('Y-m-d H:i:s')
         ];
-        $this->M_post->Delete($data, $id_post);
+        return $this->M_post->Delete($data, $id_post);
     }
 
     public function Activated() {
@@ -205,7 +205,7 @@ class Post extends CI_Controller {
             'sysupdateuser' => $this->user + false,
             'sysupdatedate' => date('Y-m-d H:i:s')
         ];
-        $this->M_post->Activated($data, $id_post);
+        return $this->M_post->Activated($data, $id_post);
     }
 
     public function Upload_image() {
@@ -220,7 +220,7 @@ class Post extends CI_Controller {
             'stat' => $upload['status'],
             'file_name' => $upload['file_name']
         ];
-        ToJson($response);
+        return ToJson($response);
     }
 
 }

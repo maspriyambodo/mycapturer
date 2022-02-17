@@ -12,7 +12,7 @@ class Elfinder_lib extends CI_Controller {
             show_404();
         }
     }
-    
+
 //    public function manager() {
 //        if ($this->session->userdata('id_user')) {
 //            $data['connector'] = site_url('/Elfinder_lib/connector');
@@ -23,12 +23,18 @@ class Elfinder_lib extends CI_Controller {
 //    }
 
     public function connector() {
+        $path = 'assets/images/blog/' . date('Y_m_d') . '/';
+        if (!is_dir($path)) {
+            ob_start();
+            mkdir($path, 0777, true);
+            ob_end_clean();
+        }
         $opts = array(
             'roots' => array(
                 array(
                     'driver' => 'LocalFileSystem',
-                    'path' => FCPATH . 'assets/images/blog/',
-                    'URL' => base_url('assets/images/blog/'),
+                    'path' => FCPATH . $path,
+                    'URL' => base_url($path),
                     'uploadDeny' => array('all'), // All Mimetypes not allowed to upload
                     'uploadAllow' => array('image', 'text/plain', 'application/pdf'), // Mimetype `image` and `text/plain` allowed to upload
                     'uploadOrder' => array('deny', 'allow'), // allowed Mimetype `image` and `text/plain` only
@@ -38,7 +44,7 @@ class Elfinder_lib extends CI_Controller {
             ),
         );
         $connector = new elFinderConnector(new elFinder($opts));
-        $connector->run();
+        return $connector->run();
     }
 
     public function elfinderAccess($attr, $path, $data, $volume, $isDir, $relpath) {

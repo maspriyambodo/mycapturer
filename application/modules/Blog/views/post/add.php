@@ -18,7 +18,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="stat_post">Status:</label>
-                        <select id="stat_post" name="stat_post" required="" class="form-control custom-select">
+                        <select id="stat_post" name="stat_post" required="" class="form-control custom-select" required="">
                             <option value="">Select Status</option>
                             <option value="1">Publish</option>
                             <option value="3">Save as Draft</option>
@@ -108,12 +108,12 @@
             hideMethod: "fadeOut"
         };
         CKEDITOR.replace('post_content', {
-            filebrowserImageBrowseUrl: '<?php echo base_url('Elfinder_lib/manager/'); ?>'
+            filebrowserImageBrowseUrl: 'Elfinder_lib/manager/'
         });
         $('.custom-select').select2();
         Dropzone.autoDiscover = false;
         var Thmbtxt = new Dropzone("#thmbtxt", {
-            url: '<?php echo base_url('Blog/Post/Upload_image'); ?>',
+            url: 'Blog/Post/Upload_image',
             paramName: "thmbtxt",
             maxFilesize: 1,
             uploadMultiple: false,

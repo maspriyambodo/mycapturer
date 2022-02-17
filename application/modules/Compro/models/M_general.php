@@ -1,40 +1,25 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-/*
- * Product:        System of AU+ PRODUCTION
- * License Type:   Company
- * Access Type:    Multi-User
- * License:        https://maspriyambodo.com
- * maspriyambodo@gmail.com
- * 
- * Thank you,
- * maspriyambodo
- */
 
-/**
- * Description of Profile
- *
- * @author centos
- */
 class M_general extends CI_Model {
 
     var $table = 'compro_option';
-    var $column_order = ['id', 'option_name', null, null, 'stat']; //set column field database for datatable orderable
-    var $column_search = ['option_name', 'option_value', 'description']; //set column field database for datatable searchable 
-    var $order = array('id' => 'asc'); // default order
+    var $column_order = ['compro_option.id', 'compro_option.option_name', 'compro_option.option_value', 'compro_option.description', 'compro_option.stat', 'compro_option.id']; //set column field database for datatable orderable
+    var $column_search = ['compro_option.option_name', 'compro_option.option_value', 'compro_option.description']; //set column field database for datatable searchable
+    var $order = ['compro_option.id' => 'asc']; // default order
 
     private function _get_datatables_query() {
-        $this->db->select('id,option_name,option_value,description,stat')
+        $this->db->select()
                 ->from($this->table);
         $i = 0;
         foreach ($this->column_search as $item) { // loop column 
-            if ($_POST['search']['value']) { // if datatable send POST for search
+            if (Post_get('search')['value']) { // if datatable send POST for search
                 if ($i === 0) { // first loop
                     $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
-                    $this->db->like($item, $_POST['search']['value']);
+                    $this->db->like($item, Post_get('search')['value']);
                 } else {
-                    $this->db->or_like($item, $_POST['search']['value']);
+                    $this->db->or_like($item, Post_get('search')['value']);
                 }
 
                 if (count($this->column_search) - 1 == $i) //last loop
@@ -43,8 +28,8 @@ class M_general extends CI_Model {
             $i++;
         }
 
-        if (isset($_POST['order'])) { // here order processing
-            $this->db->order_by($this->column_order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+        if (Post_get('order')) { // here order processing
+            $this->db->order_by($this->column_order[Post_get('order')['0']['column']], Post_get('order')['0']['dir']);
         } else if (isset($this->order)) {
             $order = $this->order;
             $this->db->order_by(key($order), $order[key($order)]);
@@ -53,8 +38,8 @@ class M_general extends CI_Model {
 
     public function lists() {
         $this->_get_datatables_query();
-        if ($_POST['length'] != -1)
-            $this->db->limit($_POST['length'], $_POST['start']);
+        if (Post_get('length') != -1)
+            $this->db->limit(Post_get('length'), Post_get('start'));
         $query = $this->db->get();
         return $query->result();
     }

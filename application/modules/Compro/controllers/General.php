@@ -7,7 +7,7 @@ class General extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('M_general', 'model');
-        $this->user = $this->bodo->Dec($this->session->userdata('id_user'));
+        $this->user = Dekrip($this->session->userdata('id_user'));
     }
 
     public function index() {
@@ -32,7 +32,7 @@ class General extends CI_Controller {
     public function Lists() {
         $list = $this->model->lists();
         $data = [];
-        $no = Post_input("start");
+        $no = Post_get("start");
         $privilege = $this->bodo->Check_previlege('Compro/General/index/');
         foreach ($list as $option) {
             $id = Enkrip($option->id);
@@ -73,7 +73,7 @@ class General extends CI_Controller {
         $csrf = $this->bodo->Csrf();
         if ($privilege['read']) {
             $output = [
-                "draw" => Post_input('draw'),
+                "draw" => Post_get('draw'),
                 "recordsTotal" => $this->model->count_all(),
                 "recordsFiltered" => $this->model->count_filtered(),
                 "data" => $data
@@ -81,7 +81,7 @@ class General extends CI_Controller {
             $output[$csrf['name']] = $csrf['hash'];
         } else {
             $output = [
-                "draw" => Post_input('draw'),
+                "draw" => Post_get('draw'),
                 "recordsTotal" => 0,
                 "recordsFiltered" => 0,
                 "data" => []

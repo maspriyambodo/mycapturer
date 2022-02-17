@@ -90,15 +90,17 @@ unset($_SESSION['succ_msg']);
                 <'row'<'col-sm-12'tr>>
                 <'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 dataTables_pager'lp>>`,
             buttons: [
-                {extend: 'print', footer: true},
-                {extend: 'copyHtml5', footer: true},
+                {extend: 'print', footer: true, orientation: 'landscape', pageSize: 'LEGAL'},
                 {extend: 'excelHtml5', footer: true},
-                {extend: 'csvHtml5', footer: true},
-                {extend: 'pdfHtml5', footer: true}
+                {extend: 'pdfHtml5', footer: true, orientation: 'landscape', pageSize: 'LEGAL'}
+            ],
+            lengthMenu: [
+                [10, 50, 100, 500, -1],
+                ['10', '50', '100', '500', 'all']
             ],
             "ajax": {
-                "url": "<?php echo site_url('Compro/General/Lists/') ?>",
-                "type": "POST",
+                "url": "Compro/General/Lists/",
+                "type": "GET",
                 "dataType": "json"
             },
             columnDefs: [

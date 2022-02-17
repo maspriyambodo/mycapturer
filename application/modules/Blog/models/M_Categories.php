@@ -5,20 +5,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_Categories extends CI_Model {
 
     var $table = 'dt_post_category';
-    var $column_order = [null, 'category', 'descriptions', 'stat', null]; //set column field database for datatable orderable
-    var $column_search = ['category', 'descriptions']; //set column field database for datatable searchable 
-    var $order = ['id' => 'asc']; // default order
+    var $column_order = ['dt_post_category.id', 'dt_post_category.category', 'dt_post_category.descriptions', 'dt_post_category.stat', 'dt_post_category.id']; //set column field database for datatable orderable
+    var $column_search = ['dt_post_category.category', 'dt_post_category.descriptions']; //set column field database for datatable searchable
+    var $order = ['dt_post_category.id' => 'asc']; // default order
 
     private function _get_datatables_query() {
         $this->db->from($this->table);
         $i = 0;
         foreach ($this->column_search as $item) { // loop column 
-            if ($_POST['search']['value']) { // if datatable send POST for search
+            if (Post_get('search')['value']) { // if datatable send POST for search
                 if ($i === 0) { // first loop
                     $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
-                    $this->db->like($item, $_POST['search']['value']);
+                    $this->db->like($item, Post_get('search')['value']);
                 } else {
-                    $this->db->or_like($item, $_POST['search']['value']);
+                    $this->db->or_like($item, Post_get('search')['value']);
                 }
 
                 if (count($this->column_search) - 1 == $i) //last loop
@@ -27,8 +27,8 @@ class M_Categories extends CI_Model {
             $i++;
         }
 
-        if (isset($_POST['order'])) { // here order processing
-            $this->db->order_by($this->column_order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+        if (Post_get('order')) { // here order processing
+            $this->db->order_by($this->column_order[Post_get('order')['0']['column']], Post_get('order')['0']['dir']);
         } else if (isset($this->order)) {
             $order = $this->order;
             $this->db->order_by(key($order), $order[key($order)]);
@@ -37,8 +37,8 @@ class M_Categories extends CI_Model {
 
     public function lists() {
         $this->_get_datatables_query();
-        if ($_POST['length'] != -1)
-            $this->db->limit($_POST['length'], $_POST['start']);
+        if (Post_get('length') != -1)
+            $this->db->limit(Post_get('length'), Post_get('start'));
         $query = $this->db->get();
         return $query->result();
     }
@@ -76,10 +76,10 @@ class M_Categories extends CI_Model {
             redirect(base_url('Blog/Categories/index/'), $this->session->set_flashdata('err_msg', 'failed, error while updating category <b>' . $data['category'] . '</b>!'));
         } else {
             $this->db->trans_commit();
-            redirect(base_url('Blog/Categories/index/'), $this->session->set_flashdata('succ_msg', 'success, category <b>'. $data['category'] .'</b> has been updated!'));
+            redirect(base_url('Blog/Categories/index/'), $this->session->set_flashdata('succ_msg', 'success, category <b>' . $data['category'] . '</b> has been updated!'));
         }
     }
-    
+
     public function Delete($data, $id) {
         $this->db->trans_begin();
         $this->db->set($data)
@@ -93,7 +93,7 @@ class M_Categories extends CI_Model {
             redirect(base_url('Blog/Categories/index/'), $this->session->set_flashdata('succ_msg', 'success, category has been deleted!'));
         }
     }
-    
+
     public function Activate($data, $id) {
         $this->db->trans_begin();
         $this->db->set($data)

@@ -8,7 +8,7 @@ class Categories extends CI_Controller {
         parent::__construct();
         $this->load->model('M_Categories');
         $this->model = $this->M_Categories;
-        $this->user = $this->bodo->Dec($this->session->userdata('id_user'));
+        $this->user = Dekrip($this->session->userdata('id_user'));
     }
 
     public function index() {
@@ -33,7 +33,7 @@ class Categories extends CI_Controller {
     public function lists() {
         $list = $this->model->lists();
         $data = [];
-        $no = Post_input("start");
+        $no = Post_get("start");
         $privilege = $this->bodo->Check_previlege('Blog/Categories/index/');
         foreach ($list as $category) {
             $id_post = Enkrip($category->id);
@@ -72,14 +72,14 @@ class Categories extends CI_Controller {
     private function _list($data, $privilege) {
         if ($privilege['read']) {
             $output = [
-                "draw" => Post_input('draw'),
+                "draw" => Post_get('draw'),
                 "recordsTotal" => $this->model->count_all(),
                 "recordsFiltered" => $this->model->count_filtered(),
                 "data" => $data
             ];
         } else {
             $output = [
-                "draw" => Post_input('draw'),
+                "draw" => Post_get('draw'),
                 "recordsTotal" => 0,
                 "recordsFiltered" => 0,
                 "data" => []
@@ -120,7 +120,7 @@ class Categories extends CI_Controller {
         ];
         $this->model->Update($data, $id_category);
     }
-    
+
     public function Activate() {
         $id_category = $this->bodo->Dec(Post_input('a_id'));
         $data = [

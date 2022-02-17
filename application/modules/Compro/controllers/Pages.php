@@ -8,11 +8,11 @@ class Pages extends CI_Controller {
         parent::__construct();
         $this->load->model('M_pages', 'model');
         $this->load->model('M_Services', 'model2');
-        $this->user = $this->bodo->Dec($this->session->userdata('id_user'));
+        $this->user = Dekrip($this->session->userdata('id_user'));
     }
 
     public function index() {
-        $id_post = $this->bodo->Dec(Post_get('service'));
+        $id_post = Dekrip(Post_get('service'));
         $post = $this->model->Read($id_post);
         $data = [
             'post' => $post,
@@ -27,7 +27,7 @@ class Pages extends CI_Controller {
     }
 
     public function Edit() {
-        $id_post = $this->bodo->Dec(Post_get('service'));
+        $id_post = Dekrip(Post_get('service'));
         $data = [
             'data' => $this->model->Edit($id_post),
             'csrf' => $this->bodo->Csrf(),
@@ -55,7 +55,7 @@ class Pages extends CI_Controller {
     public function lists() {
         $list = $this->model->lists();
         $data = [];
-        $no = Post_input("start");
+        $no = Post_get("start");
         $privilege = $this->bodo->Check_previlege('Compro/Services/Pages/');
         foreach ($list as $post) {
             $id_post = Enkrip($post->id_post);
@@ -84,14 +84,14 @@ class Pages extends CI_Controller {
     private function _list($data, $privilege) {
         if ($privilege['read']) {
             $output = [
-                "draw" => Post_input('draw'),
+                "draw" => Post_get('draw'),
                 "recordsTotal" => $this->model->count_all(),
                 "recordsFiltered" => $this->model->count_filtered(),
                 "data" => $data
             ];
         } else {
             $output = [
-                "draw" => Post_input('draw'),
+                "draw" => Post_get('draw'),
                 "recordsTotal" => 0,
                 "recordsFiltered" => 0,
                 "data" => []
@@ -101,7 +101,7 @@ class Pages extends CI_Controller {
     }
 
     public function update_page() {
-        $id = $this->bodo->Dec(Post_get('service'));
+        $id = Dekrip(Post_get('service'));
         if (!empty($id)) {
             $post_tags = str_replace([' ', '.'], '', Post_input('post_tags'));
             $data = [
@@ -118,7 +118,7 @@ class Pages extends CI_Controller {
     }
 
     public function Delete() {
-        $id = $this->bodo->Dec(Post_input('d_id'));
+        $id = Dekrip(Post_input('d_id'));
         $data = [
             'post_status' => 0 + false,
             'sysdeleteuser' => $this->user + false,

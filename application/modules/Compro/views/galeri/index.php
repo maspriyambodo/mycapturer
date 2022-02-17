@@ -104,8 +104,7 @@ unset($_SESSION['succ_msg']);
             columnDefs: [
                 {
                     targets: 0,
-                    className: 'text-center',
-                    orderable: false
+                    className: 'text-center'
                 },
                 {
                     targets: 3,

@@ -1,28 +1,13 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-/*
- * Product:        System of AU+ PRODUCTION
- * License Type:   Company
- * Access Type:    Multi-User
- * License:        https://maspriyambodo.com
- * maspriyambodo@gmail.com
- * 
- * Thank you,
- * maspriyambodo
- */
 
-/**
- * Description of Profile
- *
- * @author centos
- */
 class Gallery extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
         $this->load->model('M_Gallery', 'model');
-        $this->user = $this->bodo->Dec($this->session->userdata('id_user'));
+        $this->user = Dekrip($this->session->userdata('id_user'));
     }
 
     public function index() {
@@ -47,7 +32,7 @@ class Gallery extends CI_Controller {
     public function Lists() {
         $list = $this->model->lists();
         $data = [];
-        $no = Post_input("start");
+        $no = Post_get("start");
         $privilege = $this->bodo->Check_previlege('Compro/Gallery/index/');
         foreach ($list as $galeri) {
             $id = Enkrip($galeri->id);
@@ -101,20 +86,20 @@ class Gallery extends CI_Controller {
     private function _list($data, $privilege) {
         if ($privilege['read']) {
             $output = [
-                "draw" => Post_input('draw'),
+                "draw" => Post_get('draw'),
                 "recordsTotal" => $this->model->count_all(),
                 "recordsFiltered" => $this->model->count_filtered(),
                 "data" => $data
             ];
         } else {
             $output = [
-                "draw" => Post_input('draw'),
+                "draw" => Post_get('draw'),
                 "recordsTotal" => 0,
                 "recordsFiltered" => 0,
                 "data" => []
             ];
         }
-        ToJson($output);
+        return ToJson($output);
     }
 
     public function Add() {
@@ -160,7 +145,7 @@ class Gallery extends CI_Controller {
             'stat' => $upload['status'],
             'file_name' => $upload['file_name']
         ];
-        ToJson($response);
+        return ToJson($response);
     }
 
     public function Save() {
@@ -257,7 +242,7 @@ class Gallery extends CI_Controller {
             'sysdeleteuser' => $this->user + false,
             'sysdeletedate' => date('Y-m-d H:i:s')
         ];
-        $this->model->Delete($data, $id);
+        return $this->model->Delete($data, $id);
     }
 
     public function Active() {
@@ -267,7 +252,7 @@ class Gallery extends CI_Controller {
             'sysupdateuser' => $this->user + false,
             'sysupdatedate' => date('Y-m-d H:i:s')
         ];
-        $this->model->Active($data, $id);
+        return $this->model->Active($data, $id);
     }
 
 }

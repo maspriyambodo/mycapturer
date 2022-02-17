@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" integrity="sha512-+EoPw+Fiwh6eSeRK7zwIKG2MA8i3rV/DGa3tdttQGgWyatG/SkncT53KHQaS5Jh9MNOT3dmFL0FjTY08And/Cw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" integrity="sha512-IsNh5E3eYy3tr/JiX2Yx4vsCujtkhwl7SLqgnwLNgf04Hrt9BT9SXlLlZlWx+OK4ndzAoALhsMNcCmkggjZB1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <div class="card card-custom">
     <div class="card-body">
         <?php
@@ -42,20 +44,6 @@ unset($_SESSION['err_msg']);
 unset($_SESSION['succ_msg']);
 ?>
 <script>
-    function Gallery(param) {
-        var tipe;
-        if (param == 'image') {
-            tipe = 'image';
-        } else {
-            tipe = 'iframe';
-        }
-        $('.image-link').magnificPopup({
-            type: tipe
-        });
-    }
-    function Edit(id) {
-        window.location.href = '<?php echo base_url('Compro/Gallery/Edit?token='); ?>' + id;
-    }
     window.onload = function () {
         $('#sticky_toolbar').attr('class', 'sticky-toolbar nav flex-column pl-2 pr-2 pt-3 pb-3 mt-4');
         $('#sticky_toolbar').append(
@@ -101,15 +89,17 @@ unset($_SESSION['succ_msg']);
                 <'row'<'col-sm-12'tr>>
                 <'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 dataTables_pager'lp>>`,
             buttons: [
-                {extend: 'print', footer: true},
-                {extend: 'copyHtml5', footer: true},
+                {extend: 'print', footer: true, orientation: 'landscape', pageSize: 'LEGAL'},
                 {extend: 'excelHtml5', footer: true},
-                {extend: 'csvHtml5', footer: true},
-                {extend: 'pdfHtml5', footer: true}
+                {extend: 'pdfHtml5', footer: true, orientation: 'landscape', pageSize: 'LEGAL'}
+            ],
+            lengthMenu: [
+                [10, 50, 100, 500, -1],
+                ['10', '50', '100', '500', 'all']
             ],
             "ajax": {
-                "url": "<?php echo site_url('Compro/Gallery/Lists/') ?>",
-                "type": "POST"
+                "url": "Compro/Gallery/Lists/",
+                "type": "GET"
             },
             columnDefs: [
                 {
@@ -138,6 +128,20 @@ unset($_SESSION['succ_msg']);
             ]
         });
     };
+    function Gallery(param) {
+        var tipe;
+        if (param == 'image') {
+            tipe = 'image';
+        } else {
+            tipe = 'iframe';
+        }
+        $('.image-link').magnificPopup({
+            type: tipe
+        });
+    }
+    function Edit(id) {
+        window.location.href = '<?php echo base_url('Compro/Gallery/Edit?token='); ?>' + id;
+    }
     function isNumber(b) {
         b = (b) ? b : window.event;
         var a = (b.which) ? b.which : b.keyCode;

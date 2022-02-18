@@ -13,10 +13,12 @@
 !application/logs/.htaccess
 /application/sessions/*
 /application/config
-/index.php
-/.htaccess
 /application/libraries/Multi_menu.php
 /application/modules/Systems/models/M_default.development
+/assets/images/logo.*
+/assets/images/favicon.*
+/index.php
+/.htaccess
 /update.php
 /node_modules
 /package-lock.json

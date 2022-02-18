@@ -15,8 +15,8 @@
 /application/config
 /application/libraries/Multi_menu.php
 /application/modules/Systems/models/M_default.development
-/assets/images/logo.*
-/assets/images/favicon.*
+/assets/images/systems/logo.*
+/assets/images/systems/favicon.*
 /index.php
 /.htaccess
 /update.php

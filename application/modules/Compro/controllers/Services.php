@@ -1,22 +1,7 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-/*
- * Product:        System of AU+ PRODUCTION
- * License Type:   Company
- * Access Type:    Multi-User
- * License:        https://maspriyambodo.com
- * maspriyambodo@gmail.com
- * 
- * Thank you,
- * maspriyambodo
- */
 
-/**
- * Description of Profile
- *
- * @author centos
- */
 class Services extends CI_Controller {
 
     public function __construct() {

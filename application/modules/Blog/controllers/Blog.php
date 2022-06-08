@@ -17,7 +17,7 @@ class Blog extends CI_Controller {
             'asside_recent' => $this->model->Recent_post(),
             'asside_tags' => $this->Tags_popular(),
             'csrf' => $this->bodo->Csrf(),
-            'siteTitle' => $this->bodo->Sys('company_name'),
+            'siteTitle' => $this->bodo->Sys('company_name') . ' - ' . substr($this->bodo->Compro()['meta_description'], 0, 150),
             'pageTitle' => 'Blog Posts',
             'description' => substr($this->bodo->Compro()['meta_description'], 0, 150)
         ];

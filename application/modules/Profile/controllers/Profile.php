@@ -1,22 +1,7 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-/*
- * Product:        System of AU+ PRODUCTION
- * License Type:   Company
- * Access Type:    Multi-User
- * License:        https://maspriyambodo.com
- * maspriyambodo@gmail.com
- * 
- * Thank you,
- * maspriyambodo
- */
 
-/**
- * Description of Profile
- *
- * @author centos
- */
 class Profile extends CI_Controller {
 
     public function __construct() {
@@ -28,7 +13,7 @@ class Profile extends CI_Controller {
         $data = [
             'csrf' => $this->bodo->Csrf(),
             'list_services' => $this->model->List_services(),
-            'siteTitle' => $this->bodo->Sys('company_name') . ' | #1 Digital Agency',
+            'siteTitle' => $this->bodo->Sys('company_name') . ' - ' . substr($this->bodo->Compro()['meta_description'], 0, 150),
             'description' => substr($this->bodo->Compro()['meta_description'], 0, 150)
         ];
         $data['slider'] = $this->parser->parse('section_slider', $data, true);

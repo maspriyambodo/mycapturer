@@ -83,7 +83,7 @@ class Profile extends CI_Controller {
         $data = [
             'csrf' => $this->bodo->Csrf(),
             'list_services' => $this->model->List_services(),
-            'siteTitle' => 'Contact | ' . $this->bodo->Sys('company_name'),
+            'siteTitle' => $this->bodo->Sys('company_name') . ' - ' . substr($this->bodo->Compro()['meta_description'], 0, 150),
             'pageTitle' => 'Contact Us',
             'description' => substr($this->bodo->Compro()['meta_description'], 0, 150)
         ];
